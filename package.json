@@ -2,7 +2,7 @@
   "name": "cinema",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://arisshha.github.io/diplom-netology",
+  "homepage": "https://arisshha.github.io/diplom",
   "type": "module",
   "scripts": {
     "dev": "vite",

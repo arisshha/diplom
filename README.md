@@ -4,7 +4,7 @@
 
 ## 🔗 Ссылка на проект
 
-**Демо:** [https://arisshha.github.io/diplom-netology/](https://arisshha.github.io/diplom-netology/)
+**Демо:** [https://arisshha.github.io/diplom/](https://arisshha.github.io/diplom/)
 
 ## ✨ Основные возможности
 
