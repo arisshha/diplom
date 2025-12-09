@@ -14,7 +14,7 @@ export default defineConfig({
 		]
 		})
 	],
-	base: process.env.VERCEL ? '/' : (process.env.NODE_ENV === 'production' ? '/Diplom/' : '/'),
+	base: process.env.VERCEL ? '/' : (process.env.NODE_ENV === 'production' ? '/diplom1/' : '/'),
 	build: {
 		outDir: 'dist',
 		assetsDir: 'assets'

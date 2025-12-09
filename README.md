@@ -4,7 +4,7 @@
 
 ## 🔗 Ссылка на проект
 
-**Демо:** [https://pavelb-sme.github.io/Diplom/](https://pavelb-sme.github.io/Diplom/)
+**Демо:** [https://arisshha.github.io/diplom1/](https://arisshha.github.io/diplom1/)
 
 ## ✨ Основные возможности
 
