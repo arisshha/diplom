@@ -1,0 +1,91 @@
+.auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 480px;
+    margin: auto;
+}
+
+.head {
+    background-color: var(--admin-headers);
+    box-sizing: border-box;
+    width: 100%;
+    height: 57px;
+    align-content: center;
+    justify-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    background: var( --background-admin);
+    width: 100%;
+    padding: 34px 0;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field label {
+    color: var(--text-secondary);
+    font-weight: var(--font-normal);
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0%;
+}
+
+.button {
+    padding-top: 10px;
+}
+
+.error {
+    background: var( --background-admin);
+    text-align: center;
+    padding-top: 10px;
+    color: red;
+}
+
+.success {
+    background: var( --background-admin);
+    text-align: center;
+    padding-top: 10px;
+    color: green;
+    font-weight: var(--font-normal);
+    font-size: 14px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.switch {
+    text-align: center;
+    padding-top: 15px;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.switch button {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 12px;
+    padding: 0;
+    margin-left: 5px;
+}
+
+.switch button:hover {
+    color: var(--admin-headers);
+}
