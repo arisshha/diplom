@@ -4,20 +4,24 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 // https://vite.dev/config/
 export default defineConfig({
-	plugins: [react(),
-		viteStaticCopy({
-		targets: [
-			{
-			src: 'public/*',
-			dest: './'
-			}
-		]
-		})
-	],
-	base: process.env.VERCEL ? '/' : (process.env.NODE_ENV === 'production' ? '/diplom/' : '/'),
-	build: {
-		outDir: 'dist',
-		assetsDir: 'assets'
-	},
-	publicDir: 'public',
+  plugins: [
+    react(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'public/*',
+          dest: './'
+        }
+      ]
+    })
+  ],
+
+  base: "/diplom/",
+
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets'
+  },
+
+  publicDir: 'public',
 })
