@@ -152,3 +152,4 @@ https://pavelb-sme.github.io/Diplom/
 - Подождите 5-10 минут (GitHub Pages может активироваться с задержкой)
 - Проверьте настройки репозитория: Settings → Pages → должен быть выбран источник "gh-pages branch"
 
+
