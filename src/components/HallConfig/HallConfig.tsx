@@ -7,11 +7,15 @@ import cn from 'classnames';
 import { configHall } from '../../store/hallOperationsSlice.slice';
 import type { SeatType } from '../../interfaces/Hall.interface';
 import { useAppData } from '../../hooks/useAppData';
+import regularChairIcon from '../../../public/Admin/regular-chair-icon.svg';
+import vipChairIcon from '../../../public/Admin/VIP-chair-icon.svg';
+import disabledChairIcon from '../../../public/Admin/disabled-chair-icon.svg';
+import xIcon from '../../../public/Admin/x-icon.svg';
 
 export function HallConfig() {
     const [error, setError] = useState<string | null>(null);
     const [configArray, setConfigArray] = useState<SeatType[][]>([]);
-    const [formValue, setFormValue] = useState(() => ({rows: 0, places: 0}));
+    const [formValue, setFormValue] = useState(() => ({ rows: 0, places: 0 }));
     const [selectHall, setSelectHall] = useState<number>(0);
     const [isManualInput, setIsManualInput] = useState(false);
 
@@ -19,18 +23,18 @@ export function HallConfig() {
     const { halls, loading: hallsLoading, error: hallsError } = useAppData();
 
     useEffect(() => {
-        if (selectHall){
+        if (selectHall) {
             setError(null);
-            loadHallConfig(selectHall);   
+            loadHallConfig(selectHall);
         }
     }, [selectHall]);
 
     useEffect(() => {
-    if (isManualInput && formValue.rows > 0 && formValue.places > 0) {
-        setError(null);
-        generateHallConfig();
-        setIsManualInput(false);
-    }
+        if (isManualInput && formValue.rows > 0 && formValue.places > 0) {
+            setError(null);
+            generateHallConfig();
+            setIsManualInput(false);
+        }
     }, [formValue.rows, formValue.places, isManualInput, error]);
 
     useEffect(() => {
@@ -42,7 +46,7 @@ export function HallConfig() {
     const loadHallConfig = (hallId: number) => {
         const selectedHall = halls.find(hall => hall.id === hallId);
 
-        if (selectedHall && selectedHall.hall_config) {           
+        if (selectedHall && selectedHall.hall_config) {
             setConfigArray(selectedHall?.hall_config)
 
             if (Array.isArray(selectedHall?.hall_config) && selectedHall?.hall_config.length > 0) {
@@ -73,11 +77,11 @@ export function HallConfig() {
     }
 
     const handleHallClick = (hallId: number) => {
-            setSelectHall(hallId);
+        setSelectHall(hallId);
     }
 
     const generateHallConfig = () => {
-        const { rows, places} = formValue;
+        const { rows, places } = formValue;
 
         if (rows <= 0 || places <= 0) {
             setError('Укажите корректное количество рядов и мест');
@@ -137,33 +141,33 @@ export function HallConfig() {
         }
     };
 
-    const handleSeatClick = (rowIndex: number, seatIndex: number ) => {
-        const newConfig = configArray.map((row, rIndex) => 
-        rIndex === rowIndex 
-            ? [...row]
-            : row
-    );
-        
+    const handleSeatClick = (rowIndex: number, seatIndex: number) => {
+        const newConfig = configArray.map((row, rIndex) =>
+            rIndex === rowIndex
+                ? [...row]
+                : row
+        );
+
         const currentType = newConfig[rowIndex][seatIndex];
         const types: SeatType[] = ['standart', 'vip', 'disabled'];
         const currentIndex = types.indexOf(currentType);
         const nextIndex = (currentIndex + 1) % types.length;
-        
+
         newConfig[rowIndex][seatIndex] = types[nextIndex];
         setConfigArray(newConfig);
-        
+
     };
 
     const getSeatIcon = (seatType: SeatType) => {
         switch (seatType) {
             case 'standart':
-                return '../Admin/regular-chair-icon.svg';
+                return regularChairIcon;
             case 'vip':
-                return '../Admin/VIP-chair-icon.svg';
+                return vipChairIcon;
             case 'disabled':
-                return '../Admin/disabled-chair-icon.svg';
+                return disabledChairIcon;
         }
-    }
+    };
 
     const cancel = (hallId: number) => {
         loadHallConfig(hallId);
@@ -194,7 +198,7 @@ export function HallConfig() {
                             </div>
                         ))}
                     </div>
-                )}    
+                )}
             </div>
             <div className={styles.header}>
                 Укажите количество рядов и максимальное количество кресел в ряду:
@@ -202,7 +206,7 @@ export function HallConfig() {
                     <div className={styles.field}>
                         <label htmlFor="hall_rows">Рядов, шт</label>
                         <Input id="hall_rows" name="rows" onChange={handleChangeForm} value={formValue.rows} />
-                    </div>
+                    </div><img src={xIcon} alt="иконка крестика" className={styles.icon} />
                     <img src="../Admin/x-icon.svg" alt="иконка крестика" className={styles.icon} />
                     <div className={styles.field}>
                         <label htmlFor="hall_places">Мест, шт</label>
@@ -215,18 +219,19 @@ export function HallConfig() {
                 Теперь вы можете указать типы кресел на схеме зала:
                 <div className={styles.chairs}>
                     <div className={styles.chair}>
-                        <img src="../Admin/regular-chair-icon.svg" alt="иконка для обычных кресел" />
+                        <img src={regularChairIcon} alt="иконка для обычных кресел" />
                         <div>&nbsp;— обычные кресла</div>
                     </div>
                     <div className={styles.chair}>
-                        <img src="../Admin/VIP-chair-icon.svg" alt="иконка для VIP кресел" />
+                        <img src={vipChairIcon} alt="иконка для VIP кресел" />
                         <div>&nbsp;— VIP кресла</div>
                     </div>
                     <div className={styles.chair}>
-                        <img src="../Admin/disabled-chair-icon.svg" alt="иконка для заблокированных кресел" />
+                        <img src={disabledChairIcon} alt="иконка для заблокированных кресел" />
                         <div>&nbsp;— заблокированные (нет кресла)</div>
                     </div>
                 </div>
+
                 <div className={styles.comment}>Чтобы изменить вид кресла, нажмите по нему левой кнопкой мыши</div>
                 {!hallsLoading ? (
                     <div className={styles['container-hall']}>

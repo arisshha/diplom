@@ -1,6 +1,7 @@
 import { useDrag } from 'react-dnd';
 import styles from './DraggableFilm.module.css';
 import type { Film } from '../../../interfaces/Film.interface';
+import deleteIcon from '../../../public/Admin/delete-icon.svg';
 
 interface DraggableFilmProps {
     film: Film;
@@ -29,7 +30,7 @@ export const DraggableFilm = ({ film, backgroundColor, onDelete }: DraggableFilm
                 <div className={styles.duration}>{film.film_duration}&nbsp;минут</div>
             </div>
             <img 
-                src="../Admin/delete-icon.svg" 
+                src={deleteIcon}
                 alt="иконка удаления" 
                 className={styles.icon} 
                 onClick={() => onDelete(film.id)}
