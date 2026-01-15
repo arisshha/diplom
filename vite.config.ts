@@ -7,16 +7,21 @@ export default defineConfig({
   plugins: [
     react(),
     viteStaticCopy({
-      targets: [
-        {
-          src: 'public/*',
-          dest: './'
-        }
-      ]
-    })
+  targets: [
+    {
+      src: 'public/Admin/**',
+      dest: './Admin'
+    },
+    {
+      src: ['public/Client/**', '!public/Client/posters/**'],
+      dest: './Client'
+    }
+  ]
+}),
   ],
 
-  base: "/diplom/",
+  // В dev открываем на корне, в проде — /diplom/ для GitHub Pages
+  base: process.env.NODE_ENV === 'production' ? '/diplom/' : '/',
 
   build: {
     outDir: 'dist',
