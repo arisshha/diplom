@@ -98,14 +98,6 @@ const getMockData = (): AllDataResponse => {
 
 export const allDataApi = {
   getAllData: async (): Promise<AllDataResponse> => {
-    try {
-      const response = await axios.get(`${PREFIX}/alldata`, {
-        timeout: 5000
-      });
-      return response.data;
-    } catch (error) {
-      console.warn('API сервер недоступен, используются mock-данные для разработки:', error);
-      return getMockData();
-    }
+    return getMockData();
   }
 };
