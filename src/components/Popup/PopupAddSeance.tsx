@@ -5,6 +5,7 @@ import type { PopupProps } from "./Popup.interface";
 import styles from "./Popup.module.css";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../store/store";
+import closeIcon from '../../assets/Admin/close-icon.svg';
 
 export function PopupAddSeance ({ onClose, onSuccessAddLocal, film, hall }: PopupProps) {    
     const [error, setError] = useState<string | null>();
@@ -53,7 +54,7 @@ export function PopupAddSeance ({ onClose, onSuccessAddLocal, film, hall }: Popu
             <div className={styles.head}>
                 <Headling appearence="admin">Добавление сеанса</Headling>
                 <img 
-                    src="../Admin/close-icon.svg" 
+                    src={closeIcon} 
                     alt="иконка крестика" 
                     className={styles.icon}  
                     onClick={onClose || (() => navigate('/admin/cabinet'))}

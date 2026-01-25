@@ -14,10 +14,10 @@ export function ClientLayout() {
                         <LogoHeadersClient />
                             {hideHeaderButton && (
                                 <div className={styles.authButtons}>
-                                    <Button appereance="small" onClick={() => navigate('/admin/login')}>
+                                    <Button appereance="small" className={styles.authButton} onClick={() => navigate('/admin/login')}>
                                         войти
                                     </Button>
-                                    <Button appereance="small" onClick={() => navigate('/admin/login?register=true')}>
+                                    <Button appereance="small" className={styles.authButton} onClick={() => navigate('/admin/login?register=true')}>
                                         регистрация
                                     </Button>
                                 </div>

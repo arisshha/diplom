@@ -7,6 +7,7 @@ import styles from "./Popup.module.css";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../store/store";
 import { addHall } from "../../store/hallOperationsSlice.slice";
+import closeIcon from '../../assets/Admin/close-icon.svg';
 
 export function PopupCreateHall ({ onClose, onSuccess }: PopupProps) {
     const [error, setError] = useState<string | null>()
@@ -50,7 +51,7 @@ export function PopupCreateHall ({ onClose, onSuccess }: PopupProps) {
     return <div className={styles.popup}>
         <div className={styles.head}>
             <Headling appearence="admin"> Добавление Зала</Headling>
-            <img src="../Admin/close-icon.svg" alt="иконка крестика" className={styles.icon}  onClick={onClose || (() => navigate('/admin/cabinet'))}/>
+            <img src={closeIcon} alt="иконка крестика" className={styles.icon}  onClick={onClose || (() => navigate('/admin/cabinet'))}/>
         </div>       
         <form className={styles.form} onSubmit={submit}>               
             <div className={styles['input-block']}>

@@ -1,5 +1,3 @@
-import axios from "axios";
-import { PREFIX } from "../helpers/API";
 import type { SeatType } from "../interfaces/Hall.interface";
 
 export interface AllDataResponse {

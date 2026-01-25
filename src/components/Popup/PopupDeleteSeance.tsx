@@ -6,6 +6,7 @@ import styles from "./Popup.module.css";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../store/store";
 import  { deleteSeance } from "../../store/seanceOperationsSlice.slice";
+import closeIcon from '../../assets/Admin/close-icon.svg';
 
 export function PopupDeleteSeance ({ onClose, onSuccess, film, seance }: PopupProps) {
     const [error, setError] = useState<string | null>()
@@ -49,7 +50,7 @@ export function PopupDeleteSeance ({ onClose, onSuccess, film, seance }: PopupPr
     return <div className={styles.popup}>
         <div className={styles.head}>
             <Headling appearence="admin"> Удаление сеанса</Headling>
-            <img src="../Admin/close-icon.svg" alt="иконка крестика" className={styles.icon}  onClick={onClose || (() => navigate('/admin/cabinet'))}/>
+            <img src={closeIcon} alt="иконка крестика" className={styles.icon}  onClick={onClose || (() => navigate('/admin/cabinet'))}/>
         </div>       
         <form className={styles.form} onSubmit={submit}>      
                 

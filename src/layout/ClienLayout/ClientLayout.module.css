@@ -1,7 +1,8 @@
 .client-layout {
-    background-image: url('../../../public/Client/background-image_client.png');
+    background-image: url('../../assets/Client/background-image_client.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center top;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -37,6 +38,11 @@
     align-items: center;
 }
 
+.authButton {
+    min-width: 96px;
+    text-align: center;
+}
+
 .content {
     align-self: center;
     width: 100%;
@@ -60,4 +66,15 @@
         background-size:cover;
         background-position: center;
     } 
+
+    .authButtons {
+        gap: 6px;
+    }
+
+    .authButton {
+        min-width: 80px;
+        padding: 10px 12px;
+        font-size: 12px;
+        line-height: 14px;
+    }
 }

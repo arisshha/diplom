@@ -27,7 +27,7 @@
 .info::after {
     content: '';
     position: absolute;
-    background-image: url('../../../public/Client/after-poster-icon-desktop.png');
+    background-image: url('../../assets/Client/after-poster-icon-desktop.png');
     top: 0;
     left: -15px;
     width: 6px;

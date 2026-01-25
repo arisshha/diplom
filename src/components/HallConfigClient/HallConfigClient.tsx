@@ -7,6 +7,7 @@ import Button from "../Button/Button";
 import cn from 'classnames'
 import type { SeatPosition, SeatTypeClient } from "../../interfaces/Hall.interface";
 import { useAppData } from "../../hooks/useAppData";
+import screenImg from '../../assets/Client/screen.png';
 
 
 export function HallConfigClient () {
@@ -142,7 +143,7 @@ export function HallConfigClient () {
             </div>
                 
             <div className={styles.hall}>
-                <img src="Client/screen.png" alt="картинка экрана" className={styles.screen}/>
+                <img src={screenImg} alt="картинка экрана" className={styles.screen}/>
                 {hallsLoading || !dataHall?.result ? (
                     <div className={styles.loading}>Загрузка схемы зала...</div>
                 ) : hallsError ? (

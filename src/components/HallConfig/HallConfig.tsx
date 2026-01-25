@@ -7,10 +7,10 @@ import cn from 'classnames';
 import { configHall } from '../../store/hallOperationsSlice.slice';
 import type { SeatType } from '../../interfaces/Hall.interface';
 import { useAppData } from '../../hooks/useAppData';
-import regularChairIcon from '../../../public/Admin/regular-chair-icon.svg';
-import vipChairIcon from '../../../public/Admin/VIP-chair-icon.svg';
-import disabledChairIcon from '../../../public/Admin/disabled-chair-icon.svg';
-import xIcon from '../../../public/Admin/x-icon.svg';
+import regularChairIcon from '../../assets/Admin/regular-chair-icon.svg';
+import vipChairIcon from '../../assets/Admin/VIP-chair-icon.svg';
+import disabledChairIcon from '../../assets/Admin/disabled-chair-icon.svg';
+import xIcon from '../../assets/Admin/x-icon.svg';
 
 export function HallConfig() {
     const [error, setError] = useState<string | null>(null);
@@ -207,7 +207,7 @@ export function HallConfig() {
                         <label htmlFor="hall_rows">Рядов, шт</label>
                         <Input id="hall_rows" name="rows" onChange={handleChangeForm} value={formValue.rows} />
                     </div><img src={xIcon} alt="иконка крестика" className={styles.icon} />
-                    <img src="../Admin/x-icon.svg" alt="иконка крестика" className={styles.icon} />
+                    <img src={xIcon} alt="иконка крестика" className={styles.icon} />
                     <div className={styles.field}>
                         <label htmlFor="hall_places">Мест, шт</label>
                         <Input id="hall_places" name="places" value={formValue.places} onChange={handleChangeForm} />

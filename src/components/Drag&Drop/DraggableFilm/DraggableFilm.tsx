@@ -1,7 +1,8 @@
 import { useDrag } from 'react-dnd';
 import styles from './DraggableFilm.module.css';
 import type { Film } from '../../../interfaces/Film.interface';
-import deleteIcon from '../../../public/Admin/delete-icon.svg';
+import deleteIcon from '../../../assets/Admin/delete-icon.svg';
+import { resolveMediaUrl, placeholderPoster } from '../../../helpers/media';
 
 interface DraggableFilmProps {
     film: Film;
@@ -24,7 +25,7 @@ export const DraggableFilm = ({ film, backgroundColor, onDelete }: DraggableFilm
             style={{ backgroundColor }}
             className={`${styles.film} ${isDragging ? styles.dragging : ''}`}
         >
-            <img src={film.film_poster} alt="постер фильма" className={styles['film-poster']}/>
+            <img src={resolveMediaUrl(film.film_poster) || placeholderPoster} alt="постер фильма" className={styles['film-poster']}/>
             <div className={styles.content}>
                 <div className={styles.name}>{film.film_name}</div>
                 <div className={styles.duration}>{film.film_duration}&nbsp;минут</div>

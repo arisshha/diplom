@@ -52,41 +52,41 @@ export function MovieCalendar () {
         arrows: true,
         infinite: false,
         speed: 300,
-        slidesToShow: 5,
-        slidesToScroll: 2,
-        variableWidth: true,
+        slidesToShow: 7,
+        slidesToScroll: 7,
+        variableWidth: false,
         responsive: [
             {
                 breakpoint: 926,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 2,
-                variableWidth: true
-            }
+                settings: {
+                    slidesToShow: 7,
+                    slidesToScroll: 7,
+                    variableWidth: false
+                }
             },
             {
-                breakpoint:767,
-            settings: {
-                slidesToShow: 5,
-                slidesToScroll: 2,
-                variableWidth: true
-            }
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 6,
+                    slidesToScroll: 6,
+                    variableWidth: false
+                }
             },
             {
-                breakpoint:590,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 4,
-                variableWidth: true
-            }
+                breakpoint: 590,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
+                    variableWidth: false
+                }
             },
             {
-                breakpoint:489,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 3,
-                variableWidth: true
-            }
+                breakpoint: 489,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
+                    variableWidth: false
+                }
             }
         ]
     }

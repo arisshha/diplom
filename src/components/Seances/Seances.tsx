@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useNavigation } from '../../hooks/useNavigation';
 import { useAppData } from '../../hooks/useAppData';
 import { parse } from 'date-fns';
+import { resolveMediaUrl, placeholderPoster } from '../../helpers/media';
 
 
 export function Seances () {
@@ -83,7 +84,7 @@ export function Seances () {
             <div className={styles.film}
             key={film.id}>
                 <div className={styles.content}>
-                    <img src={film.film_poster} className={styles.poster} />
+                    <img src={resolveMediaUrl(film.film_poster) || placeholderPoster} className={styles.poster} />
                     <div className={styles.info}>
                         <div className={styles.name}>{film.film_name}</div>
                         <div>{film.film_description}</div>

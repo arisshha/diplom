@@ -53,7 +53,7 @@ const router = createBrowserRouter([
 		element: <Error />
 	}
 ], {
-	basename: import.meta.env.VERCEL ? '/' : (import.meta.env.MODE === 'production' ? '/Diplom' : '/'),
+	basename: import.meta.env.VERCEL ? '/' : (import.meta.env.MODE === 'production' ? '/diplom' : '/'),
 })
 
 createRoot(document.getElementById('root')!).render(

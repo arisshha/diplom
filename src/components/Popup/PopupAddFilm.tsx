@@ -8,6 +8,7 @@ import cn from 'classnames';
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { addFilm } from "../../store/filmOperationsSlice.slice";
+import closeIcon from '../../assets/Admin/close-icon.svg';
 
 
 export function PopupAddFilm ({ onClose, onSuccess }: PopupProps) {
@@ -94,7 +95,7 @@ export function PopupAddFilm ({ onClose, onSuccess }: PopupProps) {
     return <div className={styles.popup}>
         <div className={styles.head}>
             <Headling appearence="admin"> Добавление фильма</Headling>
-            <img src="../Admin/close-icon.svg" alt="иконка крестика" className={styles.icon}  onClick={onClose || (() => navigate('/admin/cabinet'))}/>
+            <img src={closeIcon} alt="иконка крестика" className={styles.icon}  onClick={onClose || (() => navigate('/admin/cabinet'))}/>
         </div>       
         <form className={styles.form} onSubmit={submit}>
             <div className={styles['input-block']}>
@@ -134,7 +135,7 @@ export function PopupAddFilm ({ onClose, onSuccess }: PopupProps) {
             <div className={styles['preview-container']}>
                 <div className={styles.preview}>
                     <img src={previewUrl} alt="Предпросмотр постера"  className={styles['preview-image']}/>
-                    <img src="../../Admin/close-icon.svg" alt="иконка крестика" onClick={handleRemovePoster} className={styles['remove-icon']}/>
+                    <img src={closeIcon} alt="иконка крестика" onClick={handleRemovePoster} className={styles['remove-icon']}/>
                 </div>
             </div>
         )}

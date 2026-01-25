@@ -10,7 +10,7 @@
 
 .container::before {
     content: '';
-    background-image: url('../../../public/Client/circle-top-ticket.png');
+    background-image: url('../../assets/Client/circle-top-ticket.png');
     background-size: 9px;
     position: absolute;
     width: 100%;
@@ -21,7 +21,7 @@
 
 .container::after {
     content: '';
-    background-image: url('../../../public/Client/circle-bot-ticket.png');
+    background-image: url('../../assets/Client/circle-bot-ticket.png');
     background-size: 9px;
     position: absolute;
     width: 100%;
@@ -46,7 +46,7 @@
 
 .header::before {
     content: '';
-    background-image: url('../../../public/Client/circle-top-ticket.png');
+    background-image: url('../../assets/Client/circle-top-ticket.png');
     background-size: 10px;
     position: absolute;
     width: 100%;
@@ -57,7 +57,7 @@
 
 .header::after {
     content: '';
-    background-image: url('../../../public/Client/circle-bot-ticket.png');
+    background-image: url('../../assets/Client/circle-bot-ticket.png');
     background-size: 9px;
     position: absolute;
     width: 100%;
