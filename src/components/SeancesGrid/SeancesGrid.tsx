@@ -37,7 +37,7 @@ export function SeancesGrid() {
     const cancel = () => {
         setLocalSeances([]);
         setError(null);
-    }
+    };
 
     const handleSave = async () => {
     
@@ -74,23 +74,23 @@ export function SeancesGrid() {
 
     const handleAddFilm = () => {
         setShowFilmPopup(true);
-    }
+    };
 
     const handleCloseFilmPopup = () => {
-        setShowSeancePopup(false)
+        setShowSeancePopup(false);
         setShowFilmPopup(false);
-    }
+    };
 
     const handleSuccessCreate = () => {
         setShowFilmPopup(false);
         dispatch(fetchAllData());
-    }
+    };
 
     const handleSeanceDelete =  (seanceId: Seance, film: Film) => {
         setSelectedSeance(seanceId);
         setSelectedFilm(film);
         setShowDeleteSeancePopup(true);
-    }
+    };
 
     const handleCloseDeletePopup = () => {
         setShowDeleteSeancePopup(false);
@@ -104,7 +104,7 @@ export function SeancesGrid() {
         } catch (err) {
             console.error('Error delete film:', err);
         }
-    }
+    };
 
     const handleFilmDropped = (film: Film, hall: Hall) => {
         setSelectedHall(hall);

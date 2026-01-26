@@ -1,10 +1,10 @@
-import { useState } from "react";
-import Button from "../Button/Button";
-import Headling from "../Headling/Headling";
-import type { PopupProps } from "./Popup.interface";
-import styles from "./Popup.module.css";
-import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../store/store";
+import { useState } from 'react';
+import Button from '../Button/Button';
+import Headling from '../Headling/Headling';
+import type { PopupProps } from './Popup.interface';
+import styles from './Popup.module.css';
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../store/store';
 import closeIcon from '../../assets/Admin/close-icon.svg';
 
 export function PopupAddSeance ({ onClose, onSuccessAddLocal, film, hall }: PopupProps) {    

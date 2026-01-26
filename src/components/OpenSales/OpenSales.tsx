@@ -1,7 +1,7 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { useAppDispatch } from '../../store/store';
 import styles from './OpenSales.module.css';
-import cn from 'classnames'
+import cn from 'classnames';
 import Button from '../Button/Button';
 import { openHall } from '../../store/hallOperationsSlice.slice';
 import { useNavigate } from 'react-router-dom';
@@ -26,10 +26,10 @@ export function OpenSales () {
     const submit = async(e: FormEvent) => {
         e.preventDefault();
         setError(null);
-        setLoading(true)
+        setLoading(true);
 
         if(loading) {
-            return
+            return;
         }
         
         if (!selectHall) {
@@ -38,14 +38,14 @@ export function OpenSales () {
             return;
         }
 
-        const newStatus = currentStatus === 1 ? 0 : 1 
+        const newStatus = currentStatus === 1 ? 0 : 1; 
 
         const params = new FormData();
-        params.set('hallOpen', newStatus.toString())
+        params.set('hallOpen', newStatus.toString());
 
         
-        await handleOpenHall(selectHall, params)
-    }
+        await handleOpenHall(selectHall, params);
+    };
 
     const handleOpenHall =  async(hallId: number, formData: FormData) => {
         try {
@@ -57,13 +57,13 @@ export function OpenSales () {
             console.error('Error updating hall:', e);
             setError(e.message || 'Ошибка при обновлении зала');
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }
+    };
     const handleHallClick = (hallId: number) => {
             setSelectHall(hallId);
             setError(null);
-    }
+    };
 
     return <form className={styles.form} onSubmit={submit}>
             <div className={styles.header}>
@@ -96,5 +96,5 @@ export function OpenSales () {
                 <Button appereance="admin" type="submit"  disabled={loading}>{currentStatus === 1 ? 'Приостановить продажу билетов' : 'Открыть продажу билетов'}</Button>
                 <Button appereance="admin" type='button' onClick={() => navigate('/')}>выйти</Button>
             </div>
-    </form>
+    </form>;
 }

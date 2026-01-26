@@ -1,16 +1,16 @@
 import circleIcon from '../../assets/Admin/circle-icon.svg';
 import checkMarkIcon from '../../assets/Admin/check_mark-icon.svg';
-import { useState } from "react";
-import Headling from "../../components/Headling/Headling";
+import { useState } from 'react';
+import Headling from '../../components/Headling/Headling';
 import styles from './SectionAdmin.module.css';
-import type { SectionAdminProps } from "./SectionAdmin.props";
+import type { SectionAdminProps } from './SectionAdmin.props';
 import cn from 'classnames';
 
 export function SectionAdmin ({ children, title }: SectionAdminProps) {
     const [isOpen, setIsOpen] = useState<boolean>(true);
     const toggleOpen = () => {
-        setIsOpen(prevState => !prevState)
-    }
+        setIsOpen(prevState => !prevState);
+    };
 
     return <>
         <div className={styles.container}>
@@ -25,5 +25,5 @@ export function SectionAdmin ({ children, title }: SectionAdminProps) {
                 {children}
             </div>}
         </div>    
-    </>
+    </>;
 }

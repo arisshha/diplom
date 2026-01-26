@@ -42,9 +42,9 @@ const seanceOperationSlice = createSlice({
             .addCase(addSeance.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message || 'Ошибка добавления сеанса';
-            })
+            });
     }
-})
+});
 
 export const seanceOperationsReducer = seanceOperationSlice.reducer;
 export const seanceOperationsActions = seanceOperationSlice.actions;

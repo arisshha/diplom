@@ -1,6 +1,6 @@
-import type { Film } from "../../interfaces/Film.interface";
-import type { Hall } from "../../interfaces/Hall.interface";
-import type { Seance } from "../../interfaces/Seance.interface";
+import type { Film } from '../../interfaces/Film.interface';
+import type { Hall } from '../../interfaces/Hall.interface';
+import type { Seance } from '../../interfaces/Seance.interface';
 
 export interface PopupForm {
     hallName?: HTMLInputElement;

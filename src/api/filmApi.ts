@@ -1,5 +1,5 @@
-import axios from "axios";
-import { PREFIX } from "../helpers/API";
+import axios from 'axios';
+import { PREFIX } from '../helpers/API';
 
 export interface CreateFilmResponse {
     success: boolean;

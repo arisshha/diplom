@@ -1,8 +1,8 @@
-import { useLocation } from "react-router-dom";
-import Button from "../Button/Button";
-import styles from './PaymentClient.module.css'
-import { useState } from "react";
-import { QRCodeSVG } from "qrcode.react";
+import { useLocation } from 'react-router-dom';
+import Button from '../Button/Button';
+import styles from './PaymentClient.module.css';
+import { useState } from 'react';
+import { QRCodeSVG } from 'qrcode.react';
 
 export function Payment() {
     const [showQR, setShowQR] = useState(false);
@@ -36,7 +36,7 @@ export function Payment() {
     };
 
     return <div>
-        <div className={styles.header}>{!showQR ? `Вы выбрали билеты:`: `Электронный билет`}</div>
+        <div className={styles.header}>{!showQR ? 'Вы выбрали билеты:': 'Электронный билет'}</div>
         <div className={styles.container}>           
             <div className={styles['ticket-info']}>
                 <div className={styles.property}>На фильм:&nbsp;<span>
@@ -67,6 +67,6 @@ export function Payment() {
                 <div>Приятного просмотра!</div>
             </div>
         </div>
-    </div> 
+    </div>; 
         
 }

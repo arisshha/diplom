@@ -1,15 +1,15 @@
-import { useState, type FormEvent } from "react";
-import Button from "../Button/Button";
-import Headling from "../Headling/Headling";
-import type { PopupProps } from "./Popup.interface";
-import styles from "./Popup.module.css";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../store/store";
-import  { deleteSeance } from "../../store/seanceOperationsSlice.slice";
+import { useState, type FormEvent } from 'react';
+import Button from '../Button/Button';
+import Headling from '../Headling/Headling';
+import type { PopupProps } from './Popup.interface';
+import styles from './Popup.module.css';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../store/store';
+import  { deleteSeance } from '../../store/seanceOperationsSlice.slice';
 import closeIcon from '../../assets/Admin/close-icon.svg';
 
 export function PopupDeleteSeance ({ onClose, onSuccess, film, seance }: PopupProps) {
-    const [error, setError] = useState<string | null>()
+    const [error, setError] = useState<string | null>();
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
@@ -26,7 +26,7 @@ export function PopupDeleteSeance ({ onClose, onSuccess, film, seance }: PopupPr
         }
         
         await handleDeleteSeance(seance.id);            
-        }
+        };
 
     const handleDeleteSeance= async (id: number) => {
         try {
@@ -45,7 +45,7 @@ export function PopupDeleteSeance ({ onClose, onSuccess, film, seance }: PopupPr
         } finally {
             setLoading(false);            
         }
-    }
+    };
 
     return <div className={styles.popup}>
         <div className={styles.head}>
@@ -63,5 +63,5 @@ export function PopupDeleteSeance ({ onClose, onSuccess, film, seance }: PopupPr
             </div>
             {error && <div>{error}</div>}
         </form>        
-    </div>
+    </div>;
 }

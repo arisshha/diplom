@@ -1,10 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 import hallOperationsSlice from './hallOperationsSlice.slice';
-import { useDispatch, useSelector, type TypedUseSelectorHook } from "react-redux";
-import allDataSlice  from "./allDataSlice.slice";
-import { filmOperationsReducer } from "./filmOperationsSlice.slice";
-import { seanceOperationsReducer } from "./seanceOperationsSlice.slice";
-import { hallClientConfig } from './hallClientConfig.slice'
+import { useDispatch, useSelector, type TypedUseSelectorHook } from 'react-redux';
+import allDataSlice  from './allDataSlice.slice';
+import { filmOperationsReducer } from './filmOperationsSlice.slice';
+import { seanceOperationsReducer } from './seanceOperationsSlice.slice';
+import { hallClientConfig } from './hallClientConfig.slice';
 
 export const store = configureStore({
     reducer: {

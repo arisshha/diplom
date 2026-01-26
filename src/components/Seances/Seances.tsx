@@ -1,4 +1,4 @@
-import styles from './Seances.module.css'
+import styles from './Seances.module.css';
 import { NavLink } from 'react-router-dom';
 import { useNavigation } from '../../hooks/useNavigation';
 import { useAppData } from '../../hooks/useAppData';
@@ -33,10 +33,10 @@ export function Seances () {
             const filmSeances = seancesByFilm[film.id] || [];
             const seancesWithHall = filmSeances.map(seance => {
                 const hall = halls.find(h => h.id === seance.seance_hallid);
-                return {seance, hall}
+                return {seance, hall};
             })
                 .filter((item): item is { seance: typeof seances[0]; hall: typeof halls[0] } => !!item.hall && item.hall.hall_open === 1)
-                    .sort((a, b) => a.seance.seance_time.localeCompare(b.seance.seance_time))
+                    .sort((a, b) => a.seance.seance_time.localeCompare(b.seance.seance_time));
                     return {
                         film,
                         seances: seancesWithHall
@@ -49,7 +49,7 @@ export function Seances () {
             ...prev,
             seance: seance,
             film: film,
-        }))
+        }));
     };
 
     const isSeancePassed = (seanceTime: string, selectedDate: string) => {
@@ -97,10 +97,10 @@ export function Seances () {
                 {Object.entries(
                     seances.reduce((acc, {seance, hall }) => {
                         if(!acc[hall.hall_name]) {
-                            acc[hall.hall_name] = []
+                            acc[hall.hall_name] = [];
                         }
                         acc[hall.hall_name].push(seance);
-                        return acc
+                        return acc;
                     }, {} as Record<string, typeof seances[0]['seance'][]>))
                 .map(([hallName, hallSeances])  => (
                     <div key={hallName} className={styles.hall}>
@@ -135,5 +135,5 @@ export function Seances () {
                 ))}
             </div>
         ))}
-    </div>
+    </div>;
 }

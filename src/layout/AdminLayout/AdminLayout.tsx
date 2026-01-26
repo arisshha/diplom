@@ -1,8 +1,8 @@
-import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import LogoHeadersAdmin from "../../components/LogoHeadersAdmin/LogoHeadersAdmin";
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import LogoHeadersAdmin from '../../components/LogoHeadersAdmin/LogoHeadersAdmin';
 import styles from './AdminLayout.module.css';
-import { authHelper } from "../../helpers/auth";
+import { authHelper } from '../../helpers/auth';
 
 export function AdminLayout() {
     const navigate = useNavigate();
@@ -29,5 +29,5 @@ export function AdminLayout() {
                         <Outlet />          
                     </div>
                 </div>
-            </div> 
+            </div>; 
 }

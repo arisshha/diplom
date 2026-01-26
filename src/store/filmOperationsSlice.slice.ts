@@ -42,9 +42,9 @@ const filmOperationSlice = createSlice({
             .addCase(addFilm.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message || 'Ошибка добавления фильма';
-            })
+            });
     }
-})
+});
 
 export const filmOperationsReducer = filmOperationSlice.reducer;
 export const filmOperationsActions = filmOperationSlice.actions;

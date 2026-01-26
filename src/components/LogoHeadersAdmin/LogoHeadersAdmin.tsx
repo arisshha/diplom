@@ -1,7 +1,7 @@
 import styles from './LogoHeadersAdmin.module.css';
-import { useNavigate, useLocation } from "react-router-dom";
-import { authHelper } from "../../helpers/auth";
-import Button from "../Button/Button";
+import { useNavigate, useLocation } from 'react-router-dom';
+import { authHelper } from '../../helpers/auth';
+import Button from '../Button/Button';
 
 export function LogoHeadersAdmin() {
 	const navigate = useNavigate();

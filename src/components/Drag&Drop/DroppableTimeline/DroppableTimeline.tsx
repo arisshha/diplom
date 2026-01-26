@@ -63,7 +63,7 @@ export const DroppableTimeline = ({
                                     filmColor={filmColors[film.id]}
                                     position={position}
                                     hallId={hall.id}
-                                />
+                                />;
                         
                     })
                 }

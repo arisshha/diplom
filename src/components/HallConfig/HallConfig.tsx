@@ -47,7 +47,7 @@ export function HallConfig() {
         const selectedHall = halls.find(hall => hall.id === hallId);
 
         if (selectedHall && selectedHall.hall_config) {
-            setConfigArray(selectedHall?.hall_config)
+            setConfigArray(selectedHall?.hall_config);
 
             if (Array.isArray(selectedHall?.hall_config) && selectedHall?.hall_config.length > 0) {
                 setConfigArray(selectedHall?.hall_config);
@@ -63,7 +63,7 @@ export function HallConfig() {
                 return;
             }
         }
-    }
+    };
 
     const handleChangeForm = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -74,11 +74,11 @@ export function HallConfig() {
             [name]: numValue
         }));
         setIsManualInput(true);
-    }
+    };
 
     const handleHallClick = (hallId: number) => {
         setSelectHall(hallId);
-    }
+    };
 
     const generateHallConfig = () => {
         const { rows, places } = formValue;
@@ -99,7 +99,7 @@ export function HallConfig() {
             );
             setConfigArray(newConfig);
         }
-    }
+    };
 
     const submit = async (e: FormEvent) => {
         e.preventDefault();
@@ -171,7 +171,7 @@ export function HallConfig() {
 
     const cancel = (hallId: number) => {
         loadHallConfig(hallId);
-    }
+    };
 
     return (
         <form className={styles.form} onSubmit={submit}>

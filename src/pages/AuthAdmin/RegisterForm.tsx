@@ -1,10 +1,10 @@
-import { useState, type FormEvent } from "react";
-import Button from "../../components/Button/Button";
-import Headling from "../../components/Headling/Headling";
-import Input from "../../components/Input/Input";
+import { useState, type FormEvent } from 'react';
+import Button from '../../components/Button/Button';
+import Headling from '../../components/Headling/Headling';
+import Input from '../../components/Input/Input';
 import styles from './AuthAdmin.module.css';
-import { type RegisterForm } from "../../interfaces/RegisterForm.interface";
-import { usersStorage } from "../../helpers/usersStorage";
+import { type RegisterForm } from '../../interfaces/RegisterForm.interface';
+import { usersStorage } from '../../helpers/usersStorage';
 
 interface RegisterFormProps {
     onSuccess: (email?: string) => void;

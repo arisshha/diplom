@@ -1,7 +1,7 @@
-import axios from "axios";
-import { PREFIX } from "../helpers/API";
-import type { SeatType } from "../interfaces/Hall.interface";
-import type { AllDataResponse } from "./allDataApi";
+import axios from 'axios';
+import { PREFIX } from '../helpers/API';
+import type { SeatType } from '../interfaces/Hall.interface';
+import type { AllDataResponse } from './allDataApi';
 
 export interface CreateHallResponse {
     success: boolean;
@@ -30,7 +30,7 @@ export const hallApi = {
     
     addHall: async (hallName: string): Promise<CreateHallResponse> => {
         const response = await axios.post(`${PREFIX}/hall`, {
-            hallName: hallName
+            hallName: hallName 
         });
         return response.data;
     },
@@ -70,16 +70,17 @@ export const hallApi = {
                     'Content-Type': 'multipart/form-data'
                 }
             }
-            )
-        return response.data
+            );
+        return response.data;
     },
 
     getConfigHall: async(params: {seanceId: number, date: string}) => {
         const response = await axios.get(
             `${PREFIX}/hallconfig?seanceId=${params.seanceId}&date=${params.date}`
-        )
-        return response.data
+        );
+        return response.data;
     },
+
     buyTickets: async(params: {seanceId: number, ticketDate: string, tickets: Array<{
             row: number,
             place: number,
@@ -87,11 +88,11 @@ export const hallApi = {
         }>}) => {
             const response = await axios.post(`${PREFIX}/ticket`,
                 {
-        seanceId: params.seanceId,
-        ticketDate: params.ticketDate,
-        tickets: JSON.stringify(params.tickets)
-    }   
-            )
-            return response
+                    seanceId: params.seanceId,
+                    ticketDate: params.ticketDate,
+                    tickets: JSON.stringify(params.tickets)
+                }   
+            );
+            return response;
         }   
 };

@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from "react";
-import { fetchHallConfig, setTickets } from "../../store/hallClientConfig.slice";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../store/store";
-import styles from './HallConfigClient.module.css'
-import Button from "../Button/Button";
-import cn from 'classnames'
-import type { SeatPosition, SeatTypeClient } from "../../interfaces/Hall.interface";
-import { useAppData } from "../../hooks/useAppData";
+import { useEffect, useRef, useState } from 'react';
+import { fetchHallConfig, setTickets } from '../../store/hallClientConfig.slice';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../store/store';
+import styles from './HallConfigClient.module.css';
+import Button from '../Button/Button';
+import cn from 'classnames';
+import type { SeatPosition, SeatTypeClient } from '../../interfaces/Hall.interface';
+import { useAppData } from '../../hooks/useAppData';
 import screenImg from '../../assets/Client/screen.png';
 
 
@@ -15,7 +15,7 @@ export function HallConfigClient () {
     const dispatch = useAppDispatch();
     const [searchParams] = useSearchParams();
     const [configArray, setConfigArray] = useState<SeatTypeClient[][]>([]);
-    const [selectedSeats, setSelectedSeats] = useState<SeatPosition[]>([])
+    const [selectedSeats, setSelectedSeats] = useState<SeatPosition[]>([]);
     const { seances, films, halls, loading: hallsLoading, error: hallsError} = useAppData();
     const { dataHall } = useAppSelector(state => state.hall);
     const seanceId = searchParams.get('seanceId');
@@ -195,5 +195,5 @@ export function HallConfigClient () {
             </div>
             
         </div>
-    </>
+    </>;
 }

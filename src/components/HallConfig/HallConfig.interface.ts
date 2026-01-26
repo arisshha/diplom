@@ -1,4 +1,4 @@
-import type { SeatType } from "../../interfaces/Hall.interface";
+import type { SeatType } from '../../interfaces/Hall.interface';
 
 export interface HallConfig {
     hallId?: number;

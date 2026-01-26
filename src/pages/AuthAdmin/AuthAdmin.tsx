@@ -1,19 +1,19 @@
-import { useState, type FormEvent, useEffect } from "react";
-import Button from "../../components/Button/Button";
-import Headling from "../../components/Headling/Headling";
-import Input from "../../components/Input/Input";
+import { useState, type FormEvent, useEffect } from 'react';
+import Button from '../../components/Button/Button';
+import Headling from '../../components/Headling/Headling';
+import Input from '../../components/Input/Input';
 import styles from './AuthAdmin.module.css';
-import  { type LoginForm } from "../../interfaces/LoginForm.interface";
-import { PREFIX } from "../../helpers/API";
-import axios from "axios";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { authHelper } from "../../helpers/auth";
-import { RegisterForm } from "./RegisterForm";
-import { usersStorage } from "../../helpers/usersStorage";
+import  { type LoginForm } from '../../interfaces/LoginForm.interface';
+import { PREFIX } from '../../helpers/API';
+import axios from 'axios';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { authHelper } from '../../helpers/auth';
+import { RegisterForm } from './RegisterForm';
+import { usersStorage } from '../../helpers/usersStorage';
 
 
 export function AuthAdmin() {
-    const [error, setError] = useState<string | null>()
+    const [error, setError] = useState<string | null>();
     const [isLoading, setIsLoading] = useState(false);
     const [searchParams] = useSearchParams();
     const [showRegister, setShowRegister] = useState(searchParams.get('register') === 'true');
@@ -53,7 +53,7 @@ export function AuthAdmin() {
         }
 
         await sendLogin(login.value, password.value);
-    }
+    };
 
     const sendLogin = async (login: string, password: string) => {
         try {
@@ -121,7 +121,7 @@ export function AuthAdmin() {
                 // Сервер вернул ошибку
                 const errorMessage = e.response.data?.error 
                     || e.response.data?.message 
-                    || `Email или пароль неверный`;
+                    || 'Email или пароль неверный';
                 setError(errorMessage);
             } else if (e.request) {
                 // Запрос был отправлен, но ответа не получено
@@ -140,7 +140,7 @@ export function AuthAdmin() {
             }
             setIsLoading(false);
         }
-    }   
+    };   
 
     if (showRegister) {
         return (

@@ -1,5 +1,5 @@
-import { useAppDispatch, useAppSelector } from "../store/store";
-import { fetchAllData } from "../store/allDataSlice.slice";
+import { useAppDispatch, useAppSelector } from '../store/store';
+import { fetchAllData } from '../store/allDataSlice.slice';
 
 export const useAppData = () => {
     const dispatch = useAppDispatch();

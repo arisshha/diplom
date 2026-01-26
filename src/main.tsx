@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Error } from './pages/Error/Error.tsx';
-import { AuthAdmin } from './pages/AuthAdmin/AuthAdmin.tsx'
+import { AuthAdmin } from './pages/AuthAdmin/AuthAdmin.tsx';
 import { AdminLayout } from './layout/AdminLayout/AdminLayout.tsx';
-import { Admin } from './pages/Admin/Admin.tsx'
+import { Admin } from './pages/Admin/Admin.tsx';
 import { Provider } from 'react-redux';
 import { store } from './store/store.ts';
 import { ClientLayout } from './layout/ClienLayout/ClientLayout.tsx';
@@ -53,8 +53,8 @@ const router = createBrowserRouter([
 		element: <Error />
 	}
 ], {
-	basename: import.meta.env.VERCEL ? '/' : (import.meta.env.MODE === 'production' ? '/diplom' : '/'),
-})
+	basename: import.meta.env.VERCEL ? '/' : '/diplom',
+});
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
@@ -66,4 +66,4 @@ createRoot(document.getElementById('root')!).render(
 			</NavigationProvider>
 		</Provider>      
 	</StrictMode>,
-)
+);

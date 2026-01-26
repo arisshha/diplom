@@ -1,14 +1,14 @@
-import { addWeeks, eachDayOfInterval, format, isToday, startOfToday } from "date-fns"
-import { ru } from "date-fns/locale";
-import { NavLink, useSearchParams } from "react-router-dom";
-import styles from './MovieCalendar.module.css'
-import { Seances } from "../Seances/Seances";
-import { useNavigation } from "../../hooks/useNavigation";
-import type { DateItem } from "../../interfaces/date.types";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { useEffect } from "react";
+import { addWeeks, eachDayOfInterval, format, isToday, startOfToday } from 'date-fns';
+import { ru } from 'date-fns/locale';
+import { NavLink, useSearchParams } from 'react-router-dom';
+import styles from './MovieCalendar.module.css';
+import { Seances } from '../Seances/Seances';
+import { useNavigation } from '../../hooks/useNavigation';
+import type { DateItem } from '../../interfaces/date.types';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { useEffect } from 'react';
 
 export function MovieCalendar () {
     
@@ -32,8 +32,8 @@ export function MovieCalendar () {
             shortWeekDay: format(date, 'EEEEEE', {locale: ru}),
             isToday: isToday(date),
             isWeekend: ['сб', 'вс'].includes(format(date, 'EEEEEE', { locale: ru }))
-        }))
-    }
+        }));
+    };
 
     const dates = getSeanceDate();
     
@@ -89,14 +89,14 @@ export function MovieCalendar () {
                 }
             }
         ]
-    }
+    };
 
     const dateActiveClick = (date: DateItem) => {
         setNavigationData(prev => ({
             ...prev,
             date: date.id           
         }));
-    }
+    };
 
     return  <div>
                 <nav className={styles.container}>
@@ -117,7 +117,7 @@ export function MovieCalendar () {
                                         <div >Сегодня</div>
                                         <div>{date.shortWeekDay},{date.shortLabel}</div>   
                                 </NavLink>
-                            </div>)
+                            </div>);
                     }    
                 return  (<div key={date.id} className={styles.slide}>
                     <NavLink 
@@ -129,7 +129,7 @@ export function MovieCalendar () {
                                 <div>{date.shortWeekDay},</div>
                                 <div>{date.shortLabel}</div>                   
                         </NavLink> 
-                </div>)
+                </div>);
                 })
             }
             
@@ -138,5 +138,5 @@ export function MovieCalendar () {
         <div>
             <Seances />
         </div>
-    </div>       
+    </div>;       
 }

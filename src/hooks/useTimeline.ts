@@ -3,7 +3,7 @@ export const useTimeline = () => {
     const visibleRange = {
         start: 7 * 60,  
         end: 23 * 60
-    }
+    };
 
     const getSeancePosition = (seanceTime: string) => {
         const [hours, minutes] = seanceTime.split(':').map(Number);

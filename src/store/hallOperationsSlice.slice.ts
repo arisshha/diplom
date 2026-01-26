@@ -45,7 +45,7 @@ export const configPrice = createAsyncThunk(
     const response = await hallApi.configPrice(params);
     return response;
   }
-)
+);
 
 export const openHall = createAsyncThunk(
   'halls/openHall',
@@ -53,7 +53,7 @@ export const openHall = createAsyncThunk(
     const response = await hallApi.openHall(params);
     return response;
   }  
-)
+);
 
 const initialState: HallOperationsState = {
   loading: false,
@@ -80,7 +80,7 @@ const hallOperationsSlice = createSlice({
       .addCase(addHall.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Ошибка добавления зала';
-      })
+      });
       
   }
 });

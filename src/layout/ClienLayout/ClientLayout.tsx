@@ -1,12 +1,12 @@
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import styles from './ClientLayout.module.css'
-import LogoHeadersClient from "../../components/LogoHeadersClient/LogoHeadersClient";
-import Button from "../../components/Button/Button";
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import styles from './ClientLayout.module.css';
+import LogoHeadersClient from '../../components/LogoHeadersClient/LogoHeadersClient';
+import Button from '../../components/Button/Button';
 
 
 export function ClientLayout() {
     const location = useLocation();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const hideHeaderButton = location.pathname === '/';
 
     return  <div className={styles['client-layout']}>
@@ -29,5 +29,5 @@ export function ClientLayout() {
                         <Outlet />          
                     </div>
                 </div>
-            </div>
+            </div>;
 }

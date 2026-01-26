@@ -1,6 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { hallApi } from "../api/hallApi";
-import type { SeatTypeClient } from "../interfaces/Hall.interface";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { hallApi } from '../api/hallApi';
+import type { SeatTypeClient } from '../interfaces/Hall.interface';
 
 interface HallState {
     dataHall: {
@@ -26,7 +26,7 @@ export const fetchHallConfig = createAsyncThunk(
         const response = await hallApi.getConfigHall({seanceId, date});
         return response;
     }
-)
+);
 
 export const setTickets = createAsyncThunk(
     'hall/buyTickets',
@@ -39,10 +39,10 @@ export const setTickets = createAsyncThunk(
             coast: number;
         }>;
     }) => {
-            const response = await hallApi.buyTickets(params)
-            return response.data
+            const response = await hallApi.buyTickets(params);
+            return response.data;
         }
-)
+);
 
 const hallSlice = createSlice({
     name: 'hall',
