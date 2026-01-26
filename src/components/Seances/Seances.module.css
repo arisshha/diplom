@@ -117,3 +117,17 @@
 @media (min-width: 391px) and (max-width: 768px) {
     
 }
+
+@media (max-width: 576px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .poster {
+        align-self: center;
+    }
+
+    .info::after {
+        display: none;
+    }
+}
