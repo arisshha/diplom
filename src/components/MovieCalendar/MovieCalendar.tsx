@@ -9,6 +9,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useEffect } from 'react';
+import cn from 'classnames';
 
 export function MovieCalendar () {
     
@@ -52,40 +53,29 @@ export function MovieCalendar () {
         arrows: true,
         infinite: false,
         speed: 300,
-        slidesToShow: 7,
-        slidesToScroll: 7,
+        slidesToShow: 11,
+        slidesToScroll: 1,
         variableWidth: false,
         responsive: [
             {
-                breakpoint: 926,
+                breakpoint: 1024,
                 settings: {
-                    slidesToShow: 7,
-                    slidesToScroll: 7,
-                    variableWidth: false
+                    slidesToShow: 8,
+                    slidesToScroll: 1
                 }
             },
             {
-                breakpoint: 767,
+                breakpoint: 768,
                 settings: {
-                    slidesToShow: 7,
-                    slidesToScroll: 7,
-                    variableWidth: false
+                    slidesToShow: 6,
+                    slidesToScroll: 1
                 }
             },
             {
-                breakpoint: 590,
+                breakpoint: 480,
                 settings: {
-                    slidesToShow: 7,
-                    slidesToScroll: 7,
-                    variableWidth: false
-                }
-            },
-            {
-                breakpoint: 489,
-                settings: {
-                    slidesToShow: 7,
-                    slidesToScroll: 7,
-                    variableWidth: false
+                    slidesToShow: 5,
+                    slidesToScroll: 1
                 }
             }
         ]
@@ -112,10 +102,10 @@ export function MovieCalendar () {
                                 <NavLink 
                                     key={date.id}
                                     to={`?seance=${date.id}`}
-                                    className={`${styles.date} ${isActive ? styles['date-active'] : ''}`}
+                                    className={cn(styles.date, { [styles['date-active']]: isActive })}
                                     onClick={() => dateActiveClick(date)}>   
-                                        <div >Сегодня</div>
-                                        <div>{date.shortWeekDay},{date.shortLabel}</div>   
+                                        <div className={styles.todayTitle}>Сегодня</div>
+                                        <div className={styles.todayDate}>{date.shortWeekDay}, {date.shortLabel}</div>   
                                 </NavLink>
                             </div>);
                     }    
@@ -123,11 +113,14 @@ export function MovieCalendar () {
                     <NavLink 
                             key={date.id}
                             to={`?seance=${date.id}`}
-                            className={`${styles.date} ${isActive ? styles['date-active'] : date.isWeekend ? styles.weekend : ''}`}
+                            className={cn(styles.date, {
+                                [styles['date-active']]: isActive,
+                                [styles.weekend]: date.isWeekend
+                            })}
                             onClick={() => dateActiveClick(date)}>
                             
-                                <div>{date.shortWeekDay},</div>
-                                <div>{date.shortLabel}</div>                   
+                                <div className={styles.weekDay}>{date.shortWeekDay},</div>
+                                <div className={styles.dayNumber}>{date.shortLabel}</div>                   
                         </NavLink> 
                 </div>);
                 })
