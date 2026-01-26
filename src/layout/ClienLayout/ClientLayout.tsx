@@ -17,9 +17,6 @@ export function ClientLayout() {
                                     <Button appereance="small" className={styles.authButton} onClick={() => navigate('/admin/login')}>
                                         войти
                                     </Button>
-                                    <Button appereance="small" className={styles.authButton} onClick={() => navigate('/admin/login?register=true')}>
-                                        регистрация
-                                    </Button>
                                 </div>
                             )}
                 </div>

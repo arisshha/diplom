@@ -19,3 +19,22 @@
   padding: 0 16px;
   box-sizing: border-box;
 }
+
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 990px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 15px 16px;
+  box-sizing: border-box;
+}
+
+.authButtons {
+  display: flex;
+}
+
+.authButton {
+    padding: 12px 24px;
+}
