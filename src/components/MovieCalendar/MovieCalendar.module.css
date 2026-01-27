@@ -81,14 +81,22 @@
     line-height: 1.2;
 }
 
-.dayNumber {
+.weekDay {
     font-size: 14px;
     font-weight: var(--font-normal);
     line-height: 1.2;
     color: var(--black);
 }
 
-.weekend .dayNumber {
+.dayNumber {
+    font-size: 14px;
+    font-weight: var(--font-bold);
+    line-height: 1.2;
+    color: var(--black);
+}
+
+.weekend .dayNumber,
+.weekend .weekDay {
     color: #FF0000;
 }
 

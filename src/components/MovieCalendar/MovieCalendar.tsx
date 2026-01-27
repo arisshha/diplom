@@ -121,7 +121,8 @@ export function MovieCalendar () {
                                                 })}
                                                 onClick={() => dateActiveClick(date)}>
                                                 
-                                                    <div className={styles.dayNumber}>{date.shortWeekDay}, {date.shortLabel}</div>                   
+                                                    <div className={styles.weekDay}>{date.shortWeekDay},</div>
+                                                    <div className={styles.dayNumber}>{date.shortLabel}</div>                   
                                         </NavLink> 
                                     </div>);
                                     })
