@@ -11,6 +11,9 @@
     gap: 20px;
     padding: 15px;
     background: var(--background-client);
+    border: none;
+    box-shadow: none;
+    outline: none;
 }
 
 .content {
@@ -119,11 +122,15 @@
 
 @media (max-width: 768px) {
     .content {
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-start;
+        gap: 16px;
     }
 
     .poster {
+        width: 100px;
+        height: auto;
+        flex-shrink: 0;
         align-self: flex-start;
     }
 
