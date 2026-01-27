@@ -2,11 +2,19 @@
   background-image: url('../../assets/Client/background-image_client.png');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: right center;
   margin: 0;
   padding: 0;
   min-height: 100vh;
   max-width: 100%;
   overflow: hidden;
+  transition: background-position 0.5s ease;
+}
+
+@media (max-width: 768px) {
+  .client-layout {
+    background-position: 80% center; 
+  }
 }
 
 .main {
