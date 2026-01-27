@@ -8,7 +8,7 @@ import type { DateItem } from '../../interfaces/date.types';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import cn from 'classnames';
 
 export function MovieCalendar () {
@@ -16,6 +16,7 @@ export function MovieCalendar () {
     const [searchParams] = useSearchParams();
     const activeSeance = searchParams.get('seance');
     const { setNavigationData, navigationData } = useNavigation();
+    const sliderRef = useRef<Slider>(null);
 
     const getSeanceDate = () => {
         const today = startOfToday();
@@ -50,7 +51,7 @@ export function MovieCalendar () {
 
     const sliderSettings = {
         dots: false,
-        arrows: true,
+        arrows: false,
         infinite: false,
         speed: 300,
         slidesToShow: 6,
@@ -90,46 +91,51 @@ export function MovieCalendar () {
 
     return  <div>
                 <nav className={styles.container}>
-                    <Slider {...sliderSettings}>
-                    
-            {dates.map((date) => {
-                const isActive = activeSeance === date.id || 
-                        (!activeSeance && dates[0]?.id === date.id);
+                    <div className={styles.calendarWrapper}>
+                        <div className={styles.sliderContainer}>
+                            <Slider ref={sliderRef} {...sliderSettings}>
+                                {dates.map((date) => {
+                                    const isActive = activeSeance === date.id || 
+                                            (!activeSeance && dates[0]?.id === date.id);
 
-                if(date.isToday) {
-                        return  (
-                            <div key={date.id} className={styles.slide}>
-                                <NavLink 
-                                    key={date.id}
-                                    to={`?seance=${date.id}`}
-                                    className={cn(styles.date, { [styles['date-active']]: isActive })}
-                                    onClick={() => dateActiveClick(date)}>   
-                                        <div className={styles.todayTitle}>Сегодня</div>
-                                        <div className={styles.todayDate}>{date.shortWeekDay}, {date.shortLabel}</div>   
-                                </NavLink>
-                            </div>);
-                    }    
-                return  (<div key={date.id} className={styles.slide}>
-                    <NavLink 
-                            key={date.id}
-                            to={`?seance=${date.id}`}
-                            className={cn(styles.date, {
-                                [styles['date-active']]: isActive,
-                                [styles.weekend]: date.isWeekend
-                            })}
-                            onClick={() => dateActiveClick(date)}>
-                            
-                                <div className={styles.weekDay}>{date.shortWeekDay},</div>
-                                <div className={styles.dayNumber}>{date.shortLabel}</div>                   
-                        </NavLink> 
-                </div>);
-                })
-            }
-            
-                </Slider>    
-        </nav>            
-        <div>
-            <Seances />
-        </div>
-    </div>;       
+                                    if(date.isToday) {
+                                            return  (
+                                                <div key={date.id} className={styles.slide}>
+                                                    <NavLink 
+                                                        key={date.id}
+                                                        to={`?seance=${date.id}`}
+                                                        className={cn(styles.date, { [styles['date-active']]: isActive })}
+                                                        onClick={() => dateActiveClick(date)}>   
+                                                            <div className={styles.todayTitle}>Сегодня</div>
+                                                            <div className={styles.todayDate}>{date.shortWeekDay}, {date.shortLabel}</div>   
+                                                    </NavLink>
+                                                </div>);
+                                        }    
+                                    return  (<div key={date.id} className={styles.slide}>
+                                        <NavLink 
+                                                key={date.id}
+                                                to={`?seance=${date.id}`}
+                                                className={cn(styles.date, {
+                                                    [styles['date-active']]: isActive,
+                                                    [styles.weekend]: date.isWeekend
+                                                })}
+                                                onClick={() => dateActiveClick(date)}>
+                                                
+                                                    <div className={styles.weekDay}>{date.shortWeekDay},</div>
+                                                    <div className={styles.dayNumber}>{date.shortLabel}</div>                   
+                                        </NavLink> 
+                                    </div>);
+                                    })
+                                }
+                            </Slider>
+                        </div>
+                        <div className={styles.arrowContainer} onClick={() => sliderRef.current?.slickNext()}>
+                            ›
+                        </div>
+                    </div>
+                </nav>            
+                <div>
+                    <Seances />
+                </div>
+            </div>;       
 }

@@ -1,8 +1,38 @@
 .container {
-    padding: 0 40px 0 0;
+    padding: 0;
     position: relative;
     max-width: 990px;
     width: 100%;
+}
+
+.calendarWrapper {
+    display: flex;
+    width: 100%;
+}
+
+.sliderContainer {
+    width: 85.71%; /* 6/7 of width */
+    min-width: 0; /* Prevent flex overflow */
+}
+
+.arrowContainer {
+    width: 14.28%; /* 1/7 of width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--white);
+    cursor: pointer;
+    font-size: 30px;
+    font-family: Arial, sans-serif;
+    color: black;
+    box-shadow: -2px 0px 4px rgba(0,0,0,0.1);
+    z-index: 10;
+    transition: background-color 0.2s;
+    user-select: none;
+}
+
+.arrowContainer:hover {
+    background: #f0f0f0;
 }
 
 .slide {
@@ -70,33 +100,11 @@
     color: #FF0000;
 }
 
-.slick-prev {
+/* Remove default slick arrows styles just in case */
+.slick-prev, .slick-next {
     display: none !important;
 }
 
-.slick-next {
-    width: 40px;
-    height: 60px;
-    background: var(--white);
-    right: 0;
-    top: 0;
-    transform: none;
-    z-index: 10;
-    border-radius: 0;
-    box-shadow: -2px 0px 4px rgba(0,0,0,0.1);
-}
-
-.slick-next:before {
-    content: '›';
-    color: black;
-    font-size: 30px;
-    font-family: Arial, sans-serif;
-    opacity: 1;
-    line-height: 60px;
-}
-
 @media (max-width: 768px) {
-    .container {
-        padding-right: 40px;
-    }
+    /* Styles adapt automatically via flexbox percentages */
 }
