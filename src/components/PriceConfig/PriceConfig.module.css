@@ -60,6 +60,11 @@
     flex-direction: column;
 }
 
+.priceInput {
+    width: 74px;
+    height: 36px;
+}
+
 .input input {
     width: 74px;
     height: 36px;
@@ -70,6 +75,7 @@
 .field {
     display: flex;
     align-items: flex-end;
+    flex-wrap: wrap;
 }
 
 .field label {
@@ -79,6 +85,11 @@
     letter-spacing: 0;
     vertical-align: middle;
     color: var(--text-secondary);
+    margin-right: 4px;
+    flex-basis: 100%;
+    margin-bottom: 4px;
+    display: block;
+    width: 100%;
 }
 
 .chair {
@@ -91,6 +102,10 @@
     letter-spacing: 0;
     vertical-align: middle;
 }
+
+.field input { margin-right: 4px; }
+.field span { margin: 0 3px; display: inline-flex; align-items: flex-end; }
+.field img { margin: 0 3px; display: inline-flex; align-items: flex-end; }
 
 .buttons {
     display: flex;
@@ -106,5 +121,46 @@
 @media (max-width: 390px) {
     .halls {
         flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .halls {
+        justify-content: flex-start;
+    }
+    .priceInput {
+        width: 100px !important;
+    }
+    .input input {
+        width: 100px !important;
+    }
+    .field {
+        display: flex !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+    }
+    .field label { margin-right: 4px; white-space: nowrap; }
+    .field input { margin-right: 4px; }
+    .field span { margin: 0 3px; }
+    .field img { margin: 0 3px; }
+    .field span:last-child { white-space: nowrap; }
+}
+@media (max-width: 480px) {
+    .header {
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+    .prices {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .field {
+        display: inline-block !important;
+        margin: 8px !important;
+    }
+    .buttons {
+        justify-content: center !important;
+        gap: 18px !important;
     }
 }

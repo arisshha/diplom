@@ -1,8 +1,8 @@
 .head {
     font-weight: var(--font-black);
-    font-size: 34px;
+    font-size: 35px;
     line-height: 39px;
-    letter-spacing: 0;
+    letter-spacing: 0.3em;
     vertical-align: middle;
     text-transform: uppercase;
     color: var(--white);
@@ -11,5 +11,16 @@
 
 .head span {
     font-weight: 100;
-    font-size: 34px;
+    font-size: 35px;
+}
+
+@media (max-width: 767px) {
+    .head {
+        font-size: 24px;
+        line-height: 28px;
+        letter-spacing: 0.25em;
+    }
+    .head span {
+        font-size: 24px;
+    }
 }

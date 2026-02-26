@@ -8,7 +8,7 @@ import type { DateItem } from '../../interfaces/date.types';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import cn from 'classnames';
 
 export function MovieCalendar () {
@@ -17,6 +17,7 @@ export function MovieCalendar () {
     const activeSeance = searchParams.get('seance');
     const { setNavigationData, navigationData } = useNavigation();
     const sliderRef = useRef<Slider>(null);
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     const getSeanceDate = () => {
         const today = startOfToday();
@@ -54,29 +55,33 @@ export function MovieCalendar () {
         arrows: false,
         infinite: false,
         speed: 300,
-        slidesToShow: 6,
+        slidesToShow: 7,
         slidesToScroll: 1,
         variableWidth: false,
+        afterChange: (index: number) => setCurrentSlide(index),
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 6,
-                    slidesToScroll: 1
+                    slidesToShow: 7,
+                    slidesToScroll: 1,
+                    variableWidth: false
                 }
             },
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 6,
-                    slidesToScroll: 1
+                    slidesToShow: 7,
+                    slidesToScroll: 1,
+                    variableWidth: false
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 6,
-                    slidesToScroll: 1
+                    slidesToShow: 7,
+                    slidesToScroll: 1,
+                    variableWidth: false
                 }
             }
         ]
@@ -89,9 +94,19 @@ export function MovieCalendar () {
         }));
     };
 
+    const capitalizeWeekDay = (s: string) => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+
     return  <div>
                 <nav className={styles.container}>
                     <div className={styles.calendarWrapper}>
+                        {currentSlide > 0 && (
+                            <div
+                                className={styles.arrowContainerLeft}
+                                onClick={() => sliderRef.current?.slickPrev()}
+                            >
+                                ‹
+                            </div>
+                        )}
                         <div className={styles.sliderContainer}>
                             <Slider ref={sliderRef} {...sliderSettings}>
                                 {dates.map((date) => {
@@ -99,18 +114,18 @@ export function MovieCalendar () {
                                             (!activeSeance && dates[0]?.id === date.id);
 
                                     if(date.isToday) {
-                                            return  (
-                                                <div key={date.id} className={styles.slide}>
-                                                    <NavLink 
-                                                        key={date.id}
-                                                        to={`?seance=${date.id}`}
-                                                        className={cn(styles.date, { [styles['date-active']]: isActive })}
-                                                        onClick={() => dateActiveClick(date)}>   
-                                                            <div className={styles.todayTitle}>Сегодня</div>
-                                                            <div className={styles.todayDate}>{date.shortWeekDay}, {date.shortLabel}</div>   
-                                                    </NavLink>
-                                                </div>);
-                                        }    
+                                        return  (
+                                            <div key={date.id} className={styles.slide}>
+                                                <NavLink 
+                                                    key={date.id}
+                                                    to={`?seance=${date.id}`}
+                                                    className={cn(styles.date, { [styles['date-active']]: isActive })}
+                                                    onClick={() => dateActiveClick(date)}>   
+                                                        <div className={styles.todayTitle}>Сегодня</div>
+                                                            <div className={styles.todayDate}>{capitalizeWeekDay(date.shortWeekDay)}, {date.shortLabel}</div>   
+                                                </NavLink>
+                                            </div>);
+                                    }    
                                     return  (<div key={date.id} className={styles.slide}>
                                         <NavLink 
                                                 key={date.id}
@@ -121,7 +136,7 @@ export function MovieCalendar () {
                                                 })}
                                                 onClick={() => dateActiveClick(date)}>
                                                 
-                                                    <div className={styles.weekDay}>{date.shortWeekDay},</div>
+                                                    <div className={styles.weekDay}>{capitalizeWeekDay(date.shortWeekDay)},</div>
                                                     <div className={styles.dayNumber}>{date.shortLabel}</div>                   
                                         </NavLink> 
                                     </div>);
@@ -129,7 +144,7 @@ export function MovieCalendar () {
                                 }
                             </Slider>
                         </div>
-                        <div className={styles.arrowContainer} onClick={() => sliderRef.current?.slickNext()}>
+                        <div className={styles.arrowContainerRight} onClick={() => sliderRef.current?.slickNext()}>
                             ›
                         </div>
                     </div>

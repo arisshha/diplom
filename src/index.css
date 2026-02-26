@@ -16,6 +16,8 @@
   --admin-headers: #63536C;
   --background-client: #F1EBE6F2;
   --background-admin: #EAE9EBF2;
+  --text: #000000;
+  --text-primary: #000000;
 }
 
 * {

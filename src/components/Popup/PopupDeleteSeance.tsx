@@ -8,7 +8,7 @@ import { useAppDispatch } from '../../store/store';
 import  { deleteSeance } from '../../store/seanceOperationsSlice.slice';
 import closeIcon from '../../assets/Admin/close-icon.svg';
 
-export function PopupDeleteSeance ({ onClose, onSuccess, film, seance }: PopupProps) {
+export function PopupDeleteSeance ({ onClose, onSuccess, film, seance, isLocal, onLocalDelete }: PopupProps) {
     const [error, setError] = useState<string | null>();
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -24,7 +24,12 @@ export function PopupDeleteSeance ({ onClose, onSuccess, film, seance }: PopupPr
             setLoading(false);
             return;
         }
-        
+        if (isLocal) {
+            onLocalDelete?.();
+            onClose?.();
+            setLoading(false);
+            return;
+        }
         await handleDeleteSeance(seance.id);            
         };
 

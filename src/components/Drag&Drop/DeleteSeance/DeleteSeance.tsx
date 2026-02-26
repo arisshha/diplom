@@ -1,5 +1,6 @@
 import { useDrop } from 'react-dnd';
 import styles from './DeleteSeance.module.css';
+import trashIcon from '../../../assets/Admin/trash-icon.svg';
 import type { Film } from '../../../interfaces/Film.interface';
 import type { Seance } from '../../../interfaces/Seance.interface';
 
@@ -28,7 +29,7 @@ export const DeleteSeance = ({ onSeanceDelete }: DeleteSeanceProps) => {
             ref={drop as any}
             className={`${styles.trashBin} ${isOver ? styles['drag-over'] : ''}`}
         >   
-            <img src="../Admin/trash-icon.svg" alt="икнока мусорки" className={styles.icon}/>
+            <img src={trashIcon} alt="иконка мусорки" className={styles.icon}/>
         </div>
     );
 };

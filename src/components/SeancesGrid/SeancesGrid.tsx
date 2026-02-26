@@ -25,6 +25,7 @@ export function SeancesGrid() {
     const [selectedFilm, setSelectedFilm] = useState<any>(null);
     const [selectedHall, setSelectedHall] = useState<any>(null);
     const [selectedSeance, setSelectedSeance] = useState<any>(null);
+    const [isLocalSelected, setIsLocalSelected] = useState<boolean>(false);
     const [localSeances, setLocalSeances] = useState<Seance[]>([]);
     const [isSaving, setIsSaving] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -40,37 +41,64 @@ export function SeancesGrid() {
     };
 
     const handleSave = async () => {
-    
-    if (isSaving) {
-        return;
-    }
-    
-    if (localSeances.length === 0) {
-        setError('Нет сеансов для сохранения');
-        return;
-    }
-    
-    setIsSaving(true);
-    
-    try {
-        await Promise.all(
-            localSeances.map(seance => 
-                dispatch(addSeance({
-                    seanceHallid: seance.seance_hallid,
-                    seanceFilmid: seance.seance_filmid,
-                    seanceTime: seance.seance_time
-                })).unwrap()
-            )
-        );
+        if (isSaving) {
+            return;
+        }
+        
+        if (localSeances.length === 0) {
+            setError('Нет сеансов для сохранения');
+            return;
+        }
+        
+        setIsSaving(true);
+        setError(null);
+        
+        try {
+            // Предварительная проверка дубликатов относительно уже существующих серверных сеансов
+            const existingKey = (s: Seance) => `${s.seance_hallid}|${s.seance_filmid}|${s.seance_time}`;
+            const existingSet = new Set(seances.map(existingKey));
+            const toSave = localSeances.filter(s => !existingSet.has(existingKey(s)));
+            const duplicates = localSeances.filter(s => existingSet.has(existingKey(s)));
 
-        setLocalSeances([]);
-        await refreshData();
-    } catch (error) {
-        console.error('Сетевая ошибка при сохранении сеансов:', error);
-    } finally {
-        setIsSaving(false);
-    }
-};
+            // Не блокируем сохранение, даже если нашли потенциальные совпадения;
+            // серверная проверка всё равно является источником истины.
+
+            const results = await Promise.all(
+                toSave.map(async (seance) => {
+                    try {
+                        const resp = await dispatch(addSeance({
+                            seanceHallid: seance.seance_hallid,
+                            seanceFilmid: seance.seance_filmid,
+                            seanceTime: seance.seance_time
+                        })).unwrap();
+                        return { success: resp?.success !== false };
+                    } catch (e) {
+                        console.error('Ошибка сохранения сеанса:', e);
+                        return { success: false };
+                    }
+                })
+            );
+            
+            const allSucceeded = results.every(r => r.success);
+            
+            await refreshData();
+            
+            if (allSucceeded) {
+                // очищаем только те, что успешно пытались сохранить, а дубликаты оставляем локально
+                setLocalSeances(duplicates);
+                if (duplicates.length > 0) {
+                    setError('Некоторые сеансы уже существуют и не были сохранены повторно.');
+                }
+            } else {
+                setError('Часть сеансов не удалось сохранить. Они остались локально на таймлайне.');
+            }
+        } catch (error) {
+            console.error('Сетевая ошибка при сохранении сеансов:', error);
+            setError('Ошибка сети при сохранении. Попробуйте ещё раз.');
+        } finally {
+            setIsSaving(false);
+        }
+    };
 
     const handleAddFilm = () => {
         setShowFilmPopup(true);
@@ -89,6 +117,8 @@ export function SeancesGrid() {
     const handleSeanceDelete =  (seanceId: Seance, film: Film) => {
         setSelectedSeance(seanceId);
         setSelectedFilm(film);
+        const isServer = seances.some(s => s.id === seanceId.id);
+        setIsLocalSelected(!isServer);
         setShowDeleteSeancePopup(true);
     };
 
@@ -96,6 +126,7 @@ export function SeancesGrid() {
         setShowDeleteSeancePopup(false);
         setSelectedSeance(null);
         setSelectedFilm('');
+        setIsLocalSelected(false);
     };
 
     const delFilm = async (id: number) => {
@@ -195,6 +226,11 @@ export function SeancesGrid() {
                                 onSuccess={handleSuccessCreate}
                                 seance={selectedSeance}
                                 film={selectedFilm}                                
+                                isLocal={isLocalSelected}
+                                onLocalDelete={() => {
+                                    if (!selectedSeance) return;
+                                    setLocalSeances(prev => prev.filter(s => s.id !== selectedSeance.id));
+                                }}
                             />
                         </div>
                     </div>

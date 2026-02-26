@@ -105,14 +105,14 @@ export function PriceConfig() {
         <div className={styles.prices}>
           <div className={styles.field}>
             <label>Цена, рублей</label>
-            <Input name="priceStandart" value={formValue.priceStandart} onChange={handleChangeForm} />
+            <Input className={styles.priceInput} name="priceStandart" value={formValue.priceStandart} onChange={handleChangeForm} />
             <span> за </span>
             <img src={regularChairIcon} alt="иконка для обычных кресел" />
             <span> обычные кресла</span>
           </div>
           <div className={styles.field}>
             <label>Цена, рублей</label>
-            <Input name="priceVip" value={formValue.priceVip} onChange={handleChangeForm} />
+            <Input className={styles.priceInput} name="priceVip" value={formValue.priceVip} onChange={handleChangeForm} />
             <span> за </span>
             <img src={vipChairIcon} alt="иконка для VIP кресел" />
             <span> VIP кресла</span>

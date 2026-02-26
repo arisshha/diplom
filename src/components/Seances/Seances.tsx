@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useNavigation } from '../../hooks/useNavigation';
 import { useAppData } from '../../hooks/useAppData';
 import { parse } from 'date-fns';
-import { resolveMediaUrl, placeholderPoster } from '../../helpers/media';
+import { resolveMediaUrl } from '../../helpers/media';
 
 
 export function Seances () {
@@ -35,7 +35,7 @@ export function Seances () {
                 const hall = halls.find(h => h.id === seance.seance_hallid);
                 return {seance, hall};
             })
-                .filter((item): item is { seance: typeof seances[0]; hall: typeof halls[0] } => !!item.hall && item.hall.hall_open === 1)
+                .filter((item): item is { seance: typeof seances[0]; hall: typeof halls[0] } => !!item.hall)
                     .sort((a, b) => a.seance.seance_time.localeCompare(b.seance.seance_time));
                     return {
                         film,
@@ -84,12 +84,25 @@ export function Seances () {
             <div className={styles.film}
             key={film.id}>
                 <div className={styles.content}>
-                    <img src={resolveMediaUrl(film.film_poster) || placeholderPoster} className={styles.poster} />
+                    {film.film_poster ? (
+                        <img 
+                            src={resolveMediaUrl(film.film_poster)} 
+                            className={styles.poster}
+                            alt="постер фильма"
+                        />
+                    ) : (
+                        <div 
+                            className={styles.posterPlaceholder}
+                            aria-label="Постер отсутствует"
+                        >
+                            Постер отсутствует
+                        </div>
+                    )}
                     <div className={styles.info}>
                         <div className={styles.name}>{film.film_name}</div>
                         <div>{film.film_description}</div>
                         <div className={styles['second-info']}>
-                            <div>{film.film_duration}&nbsp;минут</div>
+                            <div>{film.film_duration ? `${Number(film.film_duration)} минут` : 'Продолжительность не указана'}</div>
                             <div>{film.film_origin}</div>
                         </div>
                     </div>
@@ -104,7 +117,9 @@ export function Seances () {
                     }, {} as Record<string, typeof seances[0]['seance'][]>))
                 .map(([hallName, hallSeances])  => (
                     <div key={hallName} className={styles.hall}>
-                        <div className={styles['hall-name']}>{hallName}</div>
+                        <div className={styles['hall-name']}>
+                            {hallName.toLowerCase().replace(/^./, c => c.toUpperCase())}
+                        </div>
                         <div className={styles.seances}>    
                             {hallSeances
                                 .sort((a, b) => a.seance_time.localeCompare(b.seance_time))
@@ -117,6 +132,8 @@ export function Seances () {
                                                 : '#'} 
                                             key={seance.id} 
                                             className={`${styles['seance-time']} ${isPassed ? styles['seance-time-disabled'] : ''}`}
+                                            aria-disabled={isPassed}
+                                            tabIndex={isPassed ? -1 : 0}
                                             onClick={(e) => {
                                                 if (!navigationData.date || isPassed) {
                                                     e.preventDefault();

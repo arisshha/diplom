@@ -3,7 +3,9 @@
   font-style: normal;
   font-weight: 400;
   color: var(--text);
-  border: 1px solid rgba(183, 183, 183, 1);
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.12);
 
 width: 272px;
 height: 36px;
@@ -16,9 +18,9 @@ padding-left: 8.8px;
 
 .input:focus {
   outline: none;
-  border: 1px solid rgb(139, 138, 138);
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.24);
 }
 
 .invalid {
-  border: 1px solid rgb(221, 21, 21);
+  box-shadow: 0px 0px 0px 1px rgba(221, 21, 21, 1);
 }

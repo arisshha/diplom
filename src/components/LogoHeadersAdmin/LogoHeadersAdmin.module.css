@@ -1,8 +1,8 @@
 .head {
     font-weight: var(--font-black);
-    font-size: 34px;
+    font-size: 35px;
     line-height: 39px;
-    letter-spacing: 0%;
+    letter-spacing: 0.3em;
     vertical-align: middle;
     text-transform: uppercase;
     color: var(--white);
@@ -10,14 +10,14 @@
 
 .head span {
     font-weight: 100;
-    font-size: 34px;
+    font-size: 35px;
 }
 
 .text {
     font-weight: var(--font-normal);
     font-size: 10px;
     line-height: 12px;
-    letter-spacing: 5px;
+    letter-spacing: 0.7em;
     vertical-align: middle;
     text-transform: uppercase;
     color: var(--white);  
@@ -25,4 +25,17 @@
 
 .logout {
     margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .head {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+    }
+    .text {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+    }
 }

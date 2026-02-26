@@ -1,0 +1,165 @@
+._root {
+  min-height: 100vh;
+  background: #404040;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 0;
+}
+
+.brand {
+  width: 990px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  font-family: var(--font);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.brand strong {
+  font-weight: var(--font-black);
+  font-size: 34px;
+  line-height: 39px;
+}
+
+.brand span {
+  font-weight: 100;
+  font-size: 34px;
+  line-height: 39px;
+  margin: 0 6px;
+}
+
+.panel {
+  width: 990px;
+  background: rgba(241, 235, 230, 0.95);
+  border-radius: 2px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.header {
+  height: 97px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ticketInfo {
+  width: 419px;
+  height: 67px;
+  position: relative;
+  color: #000000;
+  font-family: var(--font);
+}
+
+.filmName {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.time {
+  position: absolute;
+  top: 25px;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.hallName {
+  position: absolute;
+  top: 49px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.hall {
+  background: #171D24;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.screen {
+  width: 284px;
+  height: 30px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  background: #FFFFFF;
+}
+
+.seats {
+  display: grid;
+  grid-template-rows: repeat(8, auto);
+  gap: 4px;
+  padding-top: 20px;
+}
+
+.row {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 4px;
+  justify-content: center;
+}
+
+.seat {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid #525252;
+  background: #FFFFFF;
+}
+
+.seatTaken {
+  background: #171D24;
+}
+
+.seatVip {
+  background: #F9953A;
+}
+
+.seatSelected {
+  background: #25C4CE;
+  box-shadow: 0 0 4px #16A6AF;
+}
+
+.legendWrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 0 0;
+}
+
+.legend {
+  color: #FFFFFF;
+  font-family: var(--font);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 30px;
+}
+
+@media (max-width: 1024px) {
+  .brand,
+  .panel {
+    width: calc(100% - 32px);
+  }
+}

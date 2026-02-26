@@ -207,7 +207,6 @@ export function HallConfig() {
                         <label htmlFor="hall_rows">Рядов, шт</label>
                         <Input id="hall_rows" name="rows" onChange={handleChangeForm} value={formValue.rows} />
                     </div><img src={xIcon} alt="иконка крестика" className={styles.icon} />
-                    <img src={xIcon} alt="иконка крестика" className={styles.icon} />
                     <div className={styles.field}>
                         <label htmlFor="hall_places">Мест, шт</label>
                         <Input id="hall_places" name="places" value={formValue.places} onChange={handleChangeForm} />

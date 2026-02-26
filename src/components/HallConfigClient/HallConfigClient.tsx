@@ -8,6 +8,7 @@ import cn from 'classnames';
 import type { SeatPosition, SeatTypeClient } from '../../interfaces/Hall.interface';
 import { useAppData } from '../../hooks/useAppData';
 import screenImg from '../../assets/Client/screen.png';
+import tapIcon from '../../assets/Client/click_tap_single_hand_gesture_icon_218645.svg';
 
 
 export function HallConfigClient () {
@@ -113,6 +114,13 @@ export function HallConfigClient () {
                         `Ряд ${ticket.row}- место ${ticket.place}`
                     ).join(', ');
                     
+                    const normalizeDate = (d?: string) => {
+                        if (!d) return 'N/A';
+                        if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
+                        const parsed = new Date(d);
+                        return isNaN(parsed.getTime()) ? 'N/A' : parsed.toISOString().slice(0,10);
+                    };
+                    
                     navigate('/payment', {
                         state: {
                             tickets: result.result, 
@@ -120,7 +128,8 @@ export function HallConfigClient () {
                             seanceTime: result.result[0]?.ticket_time,
                             totalCoast: totalCoast,
                             hallName: result.result[0]?.ticket_hallname,
-                            selectedSeatsInfo: selectedSeatsInfo
+                            selectedSeatsInfo: selectedSeatsInfo,
+                            selectedDate: normalizeDate(date)
                         }
                     });
                 } else {
@@ -140,6 +149,15 @@ export function HallConfigClient () {
                 <div className={styles['film-name']}>{film?.film_name}</div>
                 <div className={styles['seance-time']}>Начало сеанса:&nbsp;{seance?.seance_time}</div>
                 <div className={styles['hall-name']}>{hall?.hall_name}</div>
+                <div className={styles['tap-hint']}>
+                    <img src={tapIcon} alt="" className={styles['tap-icon']} aria-hidden="true" />
+                    <span className={styles['tap-text']}>
+                        <span>Тапните</span>
+                        <span>дважды,</span>
+                        <span>чтобы</span>
+                        <span>увеличить</span>
+                    </span>
+                </div>
             </div>
                 
             <div className={styles.hall}>

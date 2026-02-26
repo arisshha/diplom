@@ -77,6 +77,8 @@
 .icon {
     width: 10px;
     height: 21px;
+    display: block;
+    align-self: center;
 }
 
 .chairs {

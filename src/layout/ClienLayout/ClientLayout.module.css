@@ -11,9 +11,21 @@
   transition: background-position 0.5s ease;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .client-layout {
-    background-position: left center; 
+    background-position: right top; 
+  }
+}
+
+@media (max-width: 1024px) {
+  .main {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .logo {
+    max-width: 100%;
+    margin: 0;
   }
 }
 
@@ -35,7 +47,7 @@
   max-width: 990px;
   width: 100%;
   margin: 0 auto;
-  padding: 15px 16px;
+  padding: 15px 16px 15px 40px;
   box-sizing: border-box;
 }
 
@@ -45,4 +57,17 @@
 
 .authButton {
     padding: 12px 24px;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .logo {
+    max-width: 100%;
+    margin: 0;
+    padding: 15px 0;
+  }
 }

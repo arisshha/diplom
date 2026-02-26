@@ -2,9 +2,26 @@
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/Admin/backgroun-image.png');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: right center;
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  transition: background-position 0.5s ease;
+}
+
+@media (max-width: 768px) {
+  .admin-layout {
+    background-position: left center;
+  }
+  .logo {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  /* rollback: remove forced full-width on mobile */
 }
 
 .main {
@@ -18,7 +35,9 @@
 .logo {
   padding-top: 35px;
   padding-right: 42px;
+  padding-left: 40px;
   margin-bottom: 40px;
+  text-align: left;
 }
 
 .title {

@@ -11,12 +11,23 @@
     border: none;
     border-radius: 3px;
     cursor: pointer;
-    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.12)
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.24), 0px 0px 3px rgba(0, 0, 0, 0.12);
 }
 
 .button:hover {
     background-color: #1899a2;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.24);
+}
+
+.button:active {
+    transform: translateY(1px);
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.24);
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 .big {
@@ -41,5 +52,3 @@
     background-color: #f3f4f4;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.24);
 }
-
-

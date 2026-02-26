@@ -18,4 +18,6 @@ export interface PopupProps {
     film?: Film;
     hall?: Hall;
     seance?: Seance;
+    isLocal?: boolean;
+    onLocalDelete?: () => void;
 }

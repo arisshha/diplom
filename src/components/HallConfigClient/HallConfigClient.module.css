@@ -1,16 +1,19 @@
 .container {
     display: flex;
     flex-direction: column;
-    max-width: 990px;
-    background: #F1EBE6F2;
-    padding-bottom: 30px;
+    width: 990px;
+    margin: 0 auto;
+    background: rgba(241, 235, 230, 0.95);
+    border-radius: 2px;
+    padding: 0 0 30px 0;
 }
 
 .seance {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 8px; 
     padding: 15px;
+    position: relative;
 }
 
 .film-name {
@@ -43,12 +46,14 @@
     flex-direction: column;
     align-items: center;
     background: #171D24;
-    padding: 15px 0;
+    padding: 15px 30px;
 }
 
 .screen {
-    max-width: 284px;
-    padding-bottom: 30px;
+    width: 284px;
+    height: 30px;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .hall-config {
@@ -60,20 +65,20 @@
 .seats {
     display: flex;
     gap: 4px;
-    
+    justify-content: center;
 }
 
 .chairs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     padding-top: 30px;
-    padding-left: 80px;
 }
 
 .chair {
     display: flex;
-    align-items: center
+    align-items: center;
+    gap: 10px;
 }
 
 .seat {
@@ -91,7 +96,7 @@
 
 .taken-chair {
     background: #171D24;
-    cursor: default;
+    cursor: not-allowed;
 }
 
 .vip-chair {
@@ -110,6 +115,7 @@
     letter-spacing: 0;
     vertical-align: middle;
     color: var(--white);
+    white-space: nowrap;
 }
 
 .button {
@@ -119,4 +125,121 @@
 
 .loading {
     color: var(--white);
+}
+
+/* Hint is hidden by default (desktop only) */
+.tap-hint {
+    display: none;
+    align-self: flex-end;
+    align-items: center;
+    gap: 8px;
+    font-weight: var(--font-light);
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    text-align: right;
+}
+.tap-text > span {
+    display: block;
+    white-space: nowrap;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .container {
+        width: 100%;
+        margin: 0;
+    }
+    .seance {
+        height: 97px;
+        justify-content: center;
+    }
+    .hall {
+        padding: 15px;
+    }
+    .screen {
+        width: clamp(200px, 60vw, 284px);
+        height: 30px;
+    }
+    .hall-config {
+        transform: scale(0.9);
+        transform-origin: top center;
+    }
+    .chairs {
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
+        grid-auto-rows: auto;
+        column-gap: 24px;
+        row-gap: 10px;
+        align-items: center;
+        justify-items: start;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .button {
+        align-self: stretch;
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+    }
+    .button button {
+        width: 100%;
+        max-width: 337px;
+    }
+    .tap-hint {
+        display: flex;
+        max-width: 45%;
+        word-break: break-word;
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+    .tap-icon {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .seance {
+        height: 97px;
+        justify-content: center;
+    }
+    .screen {
+        width: clamp(160px, 80vw, 284px);
+    }
+    .hall-config {
+        transform: scale(0.8);
+    }
+    .chairs {
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
+        column-gap: 16px;
+        row-gap: 8px;
+        align-items: center;
+        justify-items: start;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .tap-hint {
+        font-size: 12px;
+        line-height: 14px;
+        display: flex;
+        max-width: 60%;
+        word-break: break-word;
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+    .tap-icon {
+        width: 20px;
+        height: 20px;
+    }
 }

@@ -34,8 +34,7 @@ export interface AllDataResponse {
 
 export const allDataApi = {
   getAllData: async (): Promise<AllDataResponse> => {
-    const response = await axios.get(`${PREFIX}/alldata`);
+    const response = await axios.get(`${PREFIX}/alldata`, { timeout: 0 });
     return response.data;
   }
 };
-

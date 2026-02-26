@@ -1,0 +1,25 @@
+html,body{margin:0;padding:0}
+body{font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:#404040;color:#FFFFFF}
+.page{display:flex;flex-direction:column;align-items:center;padding:40px 0}
+.container{width:990px;border:2px dashed #FDB81D;box-sizing:border-box}
+.ticket{display:flex;flex-direction:column}
+.ticket__header{width:990px;height:67px;background:#C76F00;padding:14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start}
+.ticket__title{margin:0 0 12px 0;font-size:22px;font-weight:700;color:#000000;letter-spacing:2px;text-transform:uppercase}
+.ticket__divider{border:0;border-top:2px dashed #FDB81D;margin:12px 0;height:0}
+.ticket__info{display:flex;flex-direction:column;gap:6px}
+.ticket__info-text{margin:0;font-size:14px;line-height:1.4;color:#000000}
+.ticket__qr{width:990px;min-height:280px;background:rgba(241,235,230,.95);padding:40px 20px;box-sizing:border-box;display:flex;justify-content:center;align-items:center}
+.ticket__qr-box{background:#FFFFFF;display:flex;justify-content:center;align-items:center;padding:15px;box-sizing:border-box}
+.ticket__qr-code{width:250px;height:250px;display:block}
+.ticket__footer{width:990px;min-height:100px;background:rgba(241,235,230,.95);padding:20px 30px;box-sizing:border-box;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.ticket__footer-text{margin:8px 0;font-size:13px;line-height:1.6;color:#000000}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 20px;border-radius:6px;background:#DE2121;color:#FFFFFF;font-weight:700;border:0;cursor:pointer}
+.btn--accent{background:#16A6AF}
+.btn--accent2{background:#1FEBE6;color:#000000}
+.admin{display:flex;gap:24px;background:#FFFFFF;color:#000000}
+.admin__sidebar{width:260px;background:#F5F5F7;padding:20px;box-sizing:border-box}
+.admin__content{flex:1;padding:24px;box-sizing:border-box}
+.popup{width:600px;background:#FFFFFF;color:#000000;border-radius:8px;box-sizing:border-box}
+.popup__header{padding:16px 20px;font-weight:700}
+.popup__body{padding:20px}
+.popup__footer{padding:16px 20px;display:flex;justify-content:flex-end;gap:12px}

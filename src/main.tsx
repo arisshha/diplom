@@ -14,6 +14,10 @@ import { HallClient } from './pages/HallClient/HallClient.tsx';
 import { PaymentClient } from './pages/PaymentClient/PaymentClient.tsx';
 import { NavigationProvider } from './context/NavigationProvider.tsx';
 import { App } from './App.tsx';
+import { FgClient } from './pages/FigmaPreview/FgClient.tsx';
+import { FgAdmin } from './pages/FigmaPreview/FgAdmin.tsx';
+import { FgPopup } from './pages/FigmaPreview/FgPopup.tsx';
+import { ClientClean } from './pages/FigmaPreview/ClientClean.tsx';
 
 const router = createBrowserRouter([
 	{
@@ -35,6 +39,22 @@ const router = createBrowserRouter([
 		]
 	},
 	{
+		path: '/figma/client',
+		element: <FgClient />
+	},
+	{
+		path: '/figma/client-clean',
+		element: <ClientClean />
+	},
+	{
+		path: '/figma/admin',
+		element: <FgAdmin />
+	},
+	{
+		path: '/figma/popup',
+		element: <FgPopup />
+	},
+	{
 		path: '/admin',
 		element: <AdminLayout />,
 		children: [
@@ -53,7 +73,7 @@ const router = createBrowserRouter([
 		element: <Error />
 	}
 ], {
-	basename: import.meta.env.VERCEL ? '/' : '/diplom',
+	basename: import.meta.env.DEV ? '/' : '/diplom',
 });
 
 createRoot(document.getElementById('root')!).render(

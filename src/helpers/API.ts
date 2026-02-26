@@ -5,7 +5,7 @@ export const PREFIX = import.meta.env.VITE_API_PREFIX || 'https://shfe-diplom.ne
 
 // Настройка axios для автоматической отправки токена
 axios.interceptors.request.use((config) => {
-    const token = authHelper.getToken();
+    const token = authHelper.getToken() || 'public_session';
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }

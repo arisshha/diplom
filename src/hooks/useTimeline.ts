@@ -1,18 +1,19 @@
 export const useTimeline = () => {
-    const timelineWidth = 720;
     const visibleRange = {
-        start: 7 * 60,  
-        end: 23 * 60
+        start: 0,  
+        end: 24 * 60
     };
 
-    const getSeancePosition = (seanceTime: string) => {
+    const getSeancePosition = (seanceTime: string, containerWidth: number) => {
         const [hours, minutes] = seanceTime.split(':').map(Number);
         
         const startMinutes = hours * 60 + minutes;
 
-        const left = ((startMinutes - visibleRange.start) / (24 * 60)) * timelineWidth; 
+        const rangeMinutes = visibleRange.end - visibleRange.start;
+        const left = ((startMinutes - visibleRange.start) / rangeMinutes) * containerWidth; 
         
-        const clampedLeft = Math.max(0, Math.min(timelineWidth, left));
+        const seanceWidth = containerWidth <= 480 ? 56 : 70;
+        const clampedLeft = Math.max(0, Math.min(containerWidth - seanceWidth, left));
 
         return {
             left: `${clampedLeft}px`

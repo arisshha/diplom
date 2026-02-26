@@ -108,6 +108,10 @@ export function PopupAddSeance ({ onClose, onSuccessAddLocal, film, hall }: Popu
                         id="time"
                         value={selectedTime}
                         onChange={(e) => setSelectedTime(e.target.value)}
+                        min="00:00"
+                        max="23:59"
+                        step={60}
+                        title="Используйте 24‑часовой формат: 00:00—23:59"
                         required
                     />
                 </div>

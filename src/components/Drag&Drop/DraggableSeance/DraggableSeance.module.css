@@ -2,7 +2,7 @@
     position: absolute;
     display: flex;
     align-items: center;
-    border: 1px solid var(--text-secondary);
+    border: none;
     border-radius: 3px;
     padding: 6px 10px;
     font-size: 12px;
@@ -48,4 +48,20 @@
     height: 6px;
     background-color: var(--text-secondary);
     transform: translateX(-50%);
+}
+
+@media (max-width: 480px) {
+    .seance {
+        width: 56px;
+        height: 40px;
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+    .name {
+        max-width: 56px;
+    }
+    .time {
+        bottom: -18px;
+        font-size: 9px;
+    }
 }

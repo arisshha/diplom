@@ -6,10 +6,13 @@ import { QRCodeSVG } from 'qrcode.react';
 
 export function Payment() {
     const [showQR, setShowQR] = useState(false);
-    
-    
     const location = useLocation();
-    const { tickets, filmName, hallName, seanceTime, totalCoast, selectedSeatsInfo } = location.state || {};
+    const { tickets, filmName, hallName, seanceTime, totalCoast, selectedSeatsInfo, selectedDate } = location.state || {};
+    const displayFilmName = filmName || 'Звёздные войны XXIII: Атака клонированных клонов';
+    const displaySeats = selectedSeatsInfo || '6, 7';
+    const displayHall = hallName || '1';
+    const displayTime = seanceTime || '18:30';
+    const displayCost = totalCoast || '600';
 
     const handleGetCode = () => {
         setShowQR(true);
@@ -22,6 +25,19 @@ export function Payment() {
         }
 
         const ticket = tickets[0];
+        const normalizeDate = (d: unknown): string => {
+            if (!d) return 'N/A';
+            if (typeof d === 'string') {
+                if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
+                const parsed = new Date(d);
+                return isNaN(parsed.getTime()) ? 'N/A' : parsed.toISOString().slice(0,10);
+            }
+            if (d instanceof Date) {
+                return d.toISOString().slice(0,10);
+            }
+            return 'N/A';
+        };
+        const normalizedSelectedDate = normalizeDate(selectedDate);
         const qrData = {
             ticketId: ticket.ticket_id || ticket.id || 'N/A',
             filmName: ticket.ticket_filmname || filmName || 'N/A',
@@ -29,44 +45,58 @@ export function Payment() {
             hallName: ticket.ticket_hallname || hallName || 'N/A',
             seatInfo: selectedSeatsInfo || 'N/A',
             price: ticket.ticket_price || totalCoast || 'N/A',
-            status: ticket.ticket_status || 'booked'
+            status: ticket.ticket_status || 'booked',
+            date: ticket.ticket_date || normalizedSelectedDate || 'N/A',
+            validationText: 'Билет действителен строго на свой сеанс'
         };
 
         return JSON.stringify(qrData);
     };
 
-    return <div>
-        <div className={styles.header}>{!showQR ? 'Вы выбрали билеты:': 'Электронный билет'}</div>
-        <div className={styles.container}>           
-            <div className={styles['ticket-info']}>
-                <div className={styles.property}>На фильм:&nbsp;<span>
-                    {filmName}</span></div>
-                <div className={styles.property}>Места:&nbsp;<span>{selectedSeatsInfo}</span></div>
-                <div className={styles.property}>В зале:&nbsp;<span>{hallName}</span></div>
-                <div className={styles.property}>Начало сеанса:&nbsp;<span>{seanceTime}</span></div>
-                {!showQR ? <div className={styles.property}>Стоимость:&nbsp;<span>{totalCoast}</span></div> : <div></div>}
-            </div>
-            <div className={styles.button}>
-                {!showQR ? (
-                    <Button appereance="big" onClick={handleGetCode}>
-                        Получить код бронирования
-                    </Button>
-                ) : (
-                    <div className={styles.qrCode}>
-                        <QRCodeSVG 
-                            value={getQRCodeValue()}
-                            size={200}
-                        />
+    return (
+        <div className={`${styles.ticketWrapper} ${!showQR ? styles.ticketWrapperShort : ''}`}>
+            {showQR ? (
+                <div className={styles.ticketHeader}>
+                    <h1 className={styles.ticketTitle}>ЭЛЕКТРОННЫЙ БИЛЕТ</h1>
+                </div>
+            ) : null}
+
+            {!showQR ? (
+                <div className={styles.ticketSubHeader}>
+                    ВЫ ВЫБРАЛИ БИЛЕТЫ:
+                </div>
+            ) : null}
+
+            <div className={showQR ? styles.ticketQrSectionQR : styles.ticketQrSection}>
+                <div className={styles.ticketQrInner}>
+                    <div className={styles.ticketInfo}>
+                        <p>На фильм: <strong>{displayFilmName}</strong></p>
+                        <p>Места: <strong>{displaySeats}</strong></p>
+                        <p>В зале: <strong>{displayHall}</strong></p>
+                        <p>Начало сеанса: <strong>{displayTime}</strong></p>
+                        <p className={styles.costLine}>Стоимость: <strong>{displayCost} рублей</strong></p>
                     </div>
-                )}
+                    {showQR ? (
+                        <div className={`${styles.qrContainer} ${styles.qrContainerQR}`}>
+                            <QRCodeSVG value={getQRCodeValue()} size={200} />
+                        </div>
+                    ) : (
+                        <div className={styles.ticketAction}>
+                            <Button appereance="big" className={styles.ctaButton} onClick={handleGetCode}>
+                                Получить код бронирования
+                            </Button>
+                        </div>
+                    )}
+                </div>
+                <div className={styles.ticketHints}>
+                    <p className={styles.hintText}>
+                        Покажите QR-код нашему контроллёру для подтверждения бронирования.
+                    </p>
+                    <p className={styles.hintText}>Приятного просмотра!</p>
+                </div>
             </div>
-            
-            
-            <div>
-                {!showQR ? <div>После оплаты билет будет доступен в этом окне, а также придёт вам на почту. Покажите QR-код нашему контроллёру у входа в зал.</div> : <div>Покажите QR-код нашему контроллеру для подтверждения бронирования.</div>}
-                <div>Приятного просмотра!</div>
-            </div>
+
+            {/* footer removed for QR layout parity */}
         </div>
-    </div>; 
-        
+    );
 }

@@ -6,5 +6,5 @@ export default defineConfig({
   plugins: [
     react(),
   ],
-  base: '/diplom/',
+  base: process.env.NODE_ENV === 'development' ? '/' : '/diplom/',
 });
