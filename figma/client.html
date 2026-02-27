@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Client</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="page">
+    <section class="container ticket">
+      <header class="ticket__header">
+        <h1 class="ticket__title">ЭЛЕКТРОННЫЙ БИЛЕТ</h1>
+        <hr class="ticket__divider">
+        <div class="ticket__info">
+          <p class="ticket__info-text">На фильм: <strong>Король лев</strong></p>
+          <p class="ticket__info-text">Место: <strong>Ряд 2- место 2</strong></p>
+          <p class="ticket__info-text">В зале: <strong>Зал 3</strong></p>
+          <p class="ticket__info-text">Начало сеанса: <strong>22:00</strong></p>
+        </div>
+      </header>
+      <section class="ticket__qr">
+        <div class="ticket__qr-box">
+          <img class="ticket__qr-code" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Crect width='250' height='250' fill='%23000'/%3E%3C/svg%3E" alt="QR">
+        </div>
+      </section>
+      <footer class="ticket__footer">
+        <p class="ticket__footer-text">Покажите QR-код нашему контроллёру для подтверждения бронирования.</p>
+        <p class="ticket__footer-text">Приятного просмотра!</p>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
